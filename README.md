@@ -39,6 +39,7 @@ What are the contents of pycim-mp ?
 --------------------------------------
 
     \pycim_mp           Source code.
+    \tests              Unit tests.
 
 
 Further Information ?
