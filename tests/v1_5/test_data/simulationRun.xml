@@ -1,0 +1,224 @@
+<simulationRun xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <responsibleParty>
+      <!--responsibleParty uri :: 8bb3d86a-d3a5-11df-837f-00163e9152a5-->
+      <gmd:individualName>
+        <gco:CharacterString>cmip5-mpi-esm</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:deliveryPoint>
+                <gco:CharacterString/>
+              </gmd:deliveryPoint>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>cmip5-mpi-esm@dkrz.de</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL/>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="contact"/>
+      </gmd:role>
+      <abbreviation>cmip5-mpi-esm</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: e5d7a61c-dd2a-11df-9b99-00163e9152a5-->
+      <gmd:individualName>
+        <gco:CharacterString>Marco Giorgetta</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:deliveryPoint>
+                <gco:CharacterString>Department (modelling group): 'The Atmosphere in the Earth System'</gco:CharacterString>
+              </gmd:deliveryPoint>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString>marco.giorgetta@zmaw.de</gco:CharacterString>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL>http://www.mpimet.mpg.de/</gmd:URL>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="author"/>
+      </gmd:role>
+      <abbreviation>Marco Giorgetta</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: c4d0637a-e8e9-11e0-b223-00163e9152a5-->
+      <gmd:organisationName>
+        <gco:CharacterString>Bundesministerium fuer Bildung und Forschung</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:deliveryPoint>
+                <gco:CharacterString/>
+              </gmd:deliveryPoint>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString/>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL/>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="funder"/>
+      </gmd:role>
+      <abbreviation>BMBF</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8bb22b46-d3a5-11df-837f-00163e9152a5-->
+      <gmd:organisationName>
+        <gco:CharacterString>Max Planck Institute for Meteorology</gco:CharacterString>
+      </gmd:organisationName>
+      <gmd:contactInfo>
+        <gmd:CI_Contact>
+          <gmd:address>
+            <gmd:CI_Address>
+              <gmd:deliveryPoint>
+                <gco:CharacterString/>
+              </gmd:deliveryPoint>
+              <gmd:electronicMailAddress>
+                <gco:CharacterString/>
+              </gmd:electronicMailAddress>
+            </gmd:CI_Address>
+          </gmd:address>
+          <gmd:onlineResource>
+            <gmd:CI_OnlineResource>
+              <gmd:linkage>
+                <gmd:URL/>
+              </gmd:linkage>
+            </gmd:CI_OnlineResource>
+          </gmd:onlineResource>
+        </gmd:CI_Contact>
+      </gmd:contactInfo>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+      </gmd:role>
+      <abbreviation>MPI-M</abbreviation>
+    </responsibleParty>
+    <project open="true" value="CMIP5">
+      <controlledVocabulary>
+        <name>project</name>
+        <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+      </controlledVocabulary>
+    </project>
+    <shortName>decadal1999-LR</shortName>
+    <longName>decadal1999-LR</longName>
+    <description>decadal hindcast experiment.</description>
+    <supports>
+      <reference xlink:href="#//CIMRecord/experiment[id='b0e0c422-d3a5-11df-837f-00163e9152a5']">
+        <id>b0e0c422-d3a5-11df-837f-00163e9152a5</id>
+        <name>decadal2000</name>
+        <type>experiment</type>
+        <version>1</version>
+        <description>Reference to an Experiment called decadal with experimentNumber 1.5 which this simulation has specialised as decadal2000</description>
+      </reference>
+    </supports>
+    <calendar>
+      <realCalendar/>
+    </calendar>
+    <authorsList>
+      <list>J. Jungclaus, M.A. Giorgetta, C. Reick, S. Legutke, V. Brovkin, T. Crueger, M. Esch, K. Fieg, K. Glushak, V. Gayler, H. Haak, H.-D. Hollweg, S. Kinne, L. Kornblueh, D. Matei, T. Mauritsen, U. Mikolajewicz,  W. Mueller, D. Notz, T. Raddatz, S. Rast, E. Roeckner, M. Salzmann, H. Schmidt, R. Schnur, J. Segschneider, K. Six, M. Stockhause, J. Wegner, H. Widmann, K.H. Wieners, M. Claussen, J. Marotzke, B. Stevens: &#13;
+CMIP5 simulations of the Max Planck Institute for Meteorology (MPI-M) based on the MPI-ESM-LR model: The decadal1999 experiment.</list>
+    </authorsList>
+    <conformance>
+      <conformance conformant="true" type="not applicable">
+        <description>additional set of decadal experiments</description>
+        <requirement>
+          <reference xlink:href="#//CIMRecord/experiment[id='b0e0c422-d3a5-11df-837f-00163e9152a5']">
+            <id>b0e0c422-d3a5-11df-837f-00163e9152a5</id>
+            <name>ic.014</name>
+            <type>NumericalRequirement</type>
+            <version>1</version>
+            <description>Reference to a NumericalRequirement called ic.014 in a experiment called 1.5 decadal</description>
+          </reference>
+        </requirement>
+      </conformance>
+    </conformance>
+    <conformance>
+      <conformance conformant="true" type="standard config">
+        <description/>
+        <requirement>
+          <reference xlink:href="#//CIMRecord/experiment[id='b0e0c422-d3a5-11df-837f-00163e9152a5']">
+            <id>b0e0c422-d3a5-11df-837f-00163e9152a5</id>
+            <name>stc.001</name>
+            <type>NumericalRequirement</type>
+            <version>1</version>
+            <description>Reference to a NumericalRequirement called stc.001 in a experiment called 1.5 decadal</description>
+          </reference>
+        </requirement>
+      </conformance>
+    </conformance>
+    <deployment>
+      <description>The resources(deployment) on which this simulation ran</description>
+      <platform>
+        <reference xlink:href="#//CIMRecord/platform[id='fee3df00-dab8-11df-8fb4-00163e9152a5']">
+          <id>fee3df00-dab8-11df-8fb4-00163e9152a5</id>
+          <name>Blizzard</name>
+          <type>platform</type>
+          <version>2</version>
+          <description>Reference to a platform called Blizzard</description>
+        </reference>
+      </platform>
+    </deployment>
+    <dateRange>
+      <closedDateRange>
+        <duration>P10Y</duration>
+        <startDate>2000-01-01T00:00:00Z</startDate>
+      </closedDateRange>
+    </dateRange>
+    <model>
+      <reference xlink:href="#//CIMRecord/modelComponent[id='8a6778c6-daa9-11df-b8ba-00163e9152a5']">
+        <id>8a6778c6-daa9-11df-b8ba-00163e9152a5</id>
+        <name>MPI-ESM-LR</name>
+        <type>modelComponent</type>
+        <version>6</version>
+        <description>Reference to a modelComponent called MPI-ESM-LR</description>
+      </reference>
+    </model>
+    <documentID>245ddee6-03a0-11e1-89e0-00163e9152a5</documentID>
+    <documentVersion>2</documentVersion>
+    <externalID open="true" value="MPI-M_MPI-ESM-LR_1.5 decadal1962">
+      <standard>
+        <name>QN_DRS</name>
+        <description>The QN_DRS value allows mapping from data files to metadata being exported from the metadata questionnaire, and contains the insitution name, the model name on which the simulation was run, and the experiment name to which the simulation conforms. Additionally, for a non-ensemble run, a rip value will be included. The format of the string will thus be: institute_model_experiment.</description>
+      </standard>
+    </externalID>
+    <documentAuthor>
+      <gmd:individualName>
+        <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+      </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-02-13T15:01:31.894228</documentCreationDate>
+  </simulationRun>
+  
