@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.302762.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.356563.
 """
 
 # Module imports.
@@ -19,7 +19,7 @@ __all__ = ['Parallelisation']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.302762$"
+__date__ ="$2012-03-12 10:45:20.356563$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class Parallelisation(object):
         super(Parallelisation, self).__init__()
 
         self.__processes = int()                                    # type = int
-        self.__ranks = []                                           # type = [software.Rank]
+        self.__ranks = []                                           # type = software.Rank
 
 
     @property

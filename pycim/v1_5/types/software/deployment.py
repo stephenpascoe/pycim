@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.298148.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.352877.
 """
 
 # Module imports.
@@ -18,7 +18,7 @@ __all__ = ['Deployment']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.298148$"
+__date__ ="$2012-03-12 10:45:20.352877$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class Deployment(object):
 
         self.__deployment_date = None                               # type = datetime.datetime
         self.__description = None                                   # type = str
-        self.__executable_argument = []                             # type = [str]
+        self.__executable_argument = []                             # type = str
         self.__executable_name = None                               # type = str
         self.__parallelisation = None                               # type = str
         self.__platform = None                                      # type = str

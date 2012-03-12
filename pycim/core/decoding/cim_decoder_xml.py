@@ -11,6 +11,7 @@ from pycim.core.cim_exception import CIMException
 from pycim.core.cim_constants import CIM_VERSIONS
 from pycim.v1_5.decoding import decode_data_object as decode_v1_5_data_object
 from pycim.v1_5.decoding import decode_model_component as decode_v1_5_model_component
+from pycim.v1_5.decoding import decode_numerical_experiment as decode_v1_5_numerical_experiment
 from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
 
 
@@ -34,6 +35,7 @@ _decoders = {
     '1.5' : {
         'dataObject' : decode_v1_5_data_object,
         'modelComponent' : decode_v1_5_model_component,
+        'numericalExperiment' : decode_v1_5_numerical_experiment,
     }
 }
 
@@ -41,7 +43,8 @@ _decoders = {
 _type_info = {
     '1.5' : {
         'dataObject' : ('data', 'Data Object'),
-        'modelComponent' : ('activity', 'Model'),
+        'modelComponent' : ('software', 'Model'),
+        'numericalExperiment' : ('activity', 'Experiment'),
     }
 }
 

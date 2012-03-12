@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.280268.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.336891.
 """
 
 # Module imports.
@@ -20,7 +20,7 @@ __all__ = ['MachineCompilerUnit']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.280268$"
+__date__ ="$2012-03-12 10:45:20.336891$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class MachineCompilerUnit(object):
         """Constructor"""
         super(MachineCompilerUnit, self).__init__()
 
-        self.__compiler = []                                        # type = [shared.Compiler]
+        self.__compiler = []                                        # type = shared.Compiler
         self.__machine = None                                       # type = shared.Machine
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.238846.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.302564.
 """
 
 # Module imports.
@@ -18,7 +18,7 @@ __all__ = ['DataExtentTimeInterval']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.238846$"
+__date__ ="$2012-03-12 10:45:20.302564$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

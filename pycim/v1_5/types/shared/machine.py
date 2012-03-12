@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.277313.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.334866.
 """
 
 # Module imports.
@@ -18,7 +18,7 @@ __all__ = ['Machine']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.277313$"
+__date__ ="$2012-03-12 10:45:20.334866$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -39,7 +39,7 @@ class Machine(object):
         self.__cores_per_processor = None                           # type = int
         self.__description = None                                   # type = str
         self.__interconnect = None                                  # type = str
-        self.__libraries = []                                       # type = [str]
+        self.__libraries = []                                       # type = str
         self.__location = None                                      # type = str
         self.__maximum_processors = None                            # type = int
         self.__name = None                                          # type = str

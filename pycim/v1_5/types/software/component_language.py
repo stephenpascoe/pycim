@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.288037.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.343079.
 """
 
 # Module imports.
@@ -19,7 +19,7 @@ __all__ = ['ComponentLanguage']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.288037$"
+__date__ ="$2012-03-12 10:45:20.343079$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class ComponentLanguage(object):
         super(ComponentLanguage, self).__init__()
 
         self.__name = str()                                         # type = str
-        self.__properties = []                                      # type = [software.ComponentLanguageProperty]
+        self.__properties = []                                      # type = software.ComponentLanguageProperty
 
 
     @property

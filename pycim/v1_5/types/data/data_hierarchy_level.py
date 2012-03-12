@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.240306.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.303688.
 """
 
 # Module imports.
@@ -19,7 +19,7 @@ __all__ = ['DataHierarchyLevel']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.240306$"
+__date__ ="$2012-03-12 10:45:20.303688$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class DataHierarchyLevel(object):
         super(DataHierarchyLevel, self).__init__()
 
         self.__is_open = None                                       # type = bool
-        self.__name = None                                          # type = data.str
+        self.__name = None                                          # type = data.DataHierarchyType
         self.__value = None                                         # type = str
 
 

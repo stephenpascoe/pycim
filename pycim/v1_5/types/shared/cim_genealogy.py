@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.260372.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.319703.
 """
 
 # Module imports.
@@ -19,7 +19,7 @@ __all__ = ['CimGenealogy']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.260372$"
+__date__ ="$2012-03-12 10:45:20.319703$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,7 +37,7 @@ class CimGenealogy(object):
         """Constructor"""
         super(CimGenealogy, self).__init__()
 
-        self.__relationships = []                                   # type = [shared.CimRelationship]
+        self.__relationships = []                                   # type = shared.CimRelationship
 
 
     @property

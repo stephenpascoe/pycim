@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.257660.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.317750.
 """
 
 # Module imports.
@@ -21,7 +21,7 @@ __all__ = ['CimDocumentRelationship']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.257660$"
+__date__ ="$2012-03-12 10:45:20.317750$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,7 +40,7 @@ class CimDocumentRelationship(CimRelationship):
         super(CimDocumentRelationship, self).__init__()
 
         self.__target = CimDocumentRelationshipTarget()             # type = shared.CimDocumentRelationshipTarget
-        self.__type = str()                                         # type = shared.str
+        self.__type = str()                                         # type = shared.CimDocumentRelationshipType
 
 
     @property

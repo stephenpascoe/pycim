@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.244422.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.307199.
 """
 
 # Module imports.
@@ -30,7 +30,7 @@ __all__ = ['DataObject']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.244422$"
+__date__ ="$2012-03-12 10:45:20.307199$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -49,12 +49,12 @@ class DataObject(DataSource):
         super(DataObject, self).__init__()
 
         self.__acronym = None                                       # type = str
-        self.__child_object = []                                    # type = [data.DataObject]
+        self.__child_object = []                                    # type = data.DataObject
         self.__cim_info = CimInfo()                                 # type = shared.CimInfo
-        self.__citations = []                                       # type = [shared.Citation]
-        self.__content = []                                         # type = [data.DataContent]
-        self.__data_property = []                                   # type = [data.DataProperty]
-        self.__data_status = None                                   # type = data.str
+        self.__citations = []                                       # type = shared.Citation
+        self.__content = []                                         # type = data.DataContent
+        self.__data_property = []                                   # type = data.DataProperty
+        self.__data_status = None                                   # type = data.DataStatusType
         self.__description = None                                   # type = str
         self.__distribution = None                                  # type = data.DataDistribution
         self.__extent = None                                        # type = data.DataExtent
@@ -63,9 +63,9 @@ class DataObject(DataSource):
         self.__keyword = None                                       # type = str
         self.__parent_object = None                                 # type = data.DataObject
         self.__parent_object_reference = None                       # type = shared.CimReference
-        self.__restriction = []                                     # type = [data.DataRestriction]
+        self.__restriction = []                                     # type = data.DataRestriction
         self.__source_simulation = None                             # type = str
-        self.__storage = []                                         # type = [data.DataStorage]
+        self.__storage = []                                         # type = data.DataStorage
 
 
     @property

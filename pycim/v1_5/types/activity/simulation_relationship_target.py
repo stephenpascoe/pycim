@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.230635.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.295146.
 """
 
 # Module imports.
@@ -20,7 +20,7 @@ __all__ = ['SimulationRelationshipTarget']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.230635$"
+__date__ ="$2012-03-12 10:45:20.295146$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -39,7 +39,7 @@ class SimulationRelationshipTarget(object):
         super(SimulationRelationshipTarget, self).__init__()
 
         self.__reference = None                                     # type = shared.CimReference
-        self.__target = None                                        # type = activity.str
+        self.__target = None                                        # type = activity.SimulationType
 
 
     @property

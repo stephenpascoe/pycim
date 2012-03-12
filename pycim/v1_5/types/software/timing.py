@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.309514.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.365313.
 """
 
 # Module imports.
@@ -19,7 +19,7 @@ __all__ = ['Timing']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.309514$"
+__date__ ="$2012-03-12 10:45:20.365313$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,7 +40,7 @@ class Timing(object):
         self.__end = None                                           # type = datetime.datetime
         self.__rate = None                                          # type = int
         self.__start = None                                         # type = datetime.datetime
-        self.__units = None                                         # type = software.str
+        self.__units = None                                         # type = software.TimingUnits
         self.__variable_rate = None                                 # type = bool
 
 

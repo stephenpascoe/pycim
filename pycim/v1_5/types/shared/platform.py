@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.282341.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.338323.
 """
 
 # Module imports.
@@ -20,7 +20,7 @@ __all__ = ['Platform']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.282341$"
+__date__ ="$2012-03-12 10:45:20.338323$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +38,7 @@ class Platform(object):
         """Constructor"""
         super(Platform, self).__init__()
 
-        self.__contact = []                                         # type = [shared.ResponsibleParty]
+        self.__contact = []                                         # type = shared.ResponsibleParty
         self.__description = None                                   # type = str
         self.__long_name = None                                     # type = str
         self.__short_name = None                                    # type = str

@@ -1,11 +1,14 @@
 """A set of cim 1.5 packages.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.220784.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.283013.
 """
 
 # Module imports.
+from pycim.v1_5.types.activity.activity import Activity
+from pycim.v1_5.types.activity.experiment import Experiment
 from pycim.v1_5.types.activity.experiment_relationship import ExperimentRelationship
 from pycim.v1_5.types.activity.experiment_relationship_target import ExperimentRelationshipTarget
+from pycim.v1_5.types.activity.measurement_campaign import MeasurementCampaign
 from pycim.v1_5.types.activity.numerical_experiment import NumericalExperiment
 from pycim.v1_5.types.activity.simulation_relationship import SimulationRelationship
 from pycim.v1_5.types.activity.simulation_relationship_target import SimulationRelationshipTarget
@@ -58,13 +61,13 @@ from pycim.v1_5.types.software.timing import Timing
 
 
 # Module exports.
-__all__ = ['ExperimentRelationship', 'ExperimentRelationshipTarget', 'NumericalExperiment', 'SimulationRelationship', 'SimulationRelationshipTarget', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'Compiler', 'DataSource', 'License', 'Machine', 'MachineCompilerUnit', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Coupling', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'Timing']
+__all__ = ['Activity', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'MeasurementCampaign', 'NumericalExperiment', 'SimulationRelationship', 'SimulationRelationshipTarget', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'Compiler', 'DataSource', 'License', 'Machine', 'MachineCompilerUnit', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Coupling', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'Timing']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-02-15 15:48:21.220784"
+__date__ ="2012-03-12 10:45:20.283013"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

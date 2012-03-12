@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.293674.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.346790.
 """
 
 # Module imports.
@@ -18,7 +18,7 @@ __all__ = ['Composition']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.293674$"
+__date__ ="$2012-03-12 10:45:20.346790$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,7 +36,7 @@ class Composition(object):
         """Constructor"""
         super(Composition, self).__init__()
 
-        self.__couplings = []                                       # type = [str]
+        self.__couplings = []                                       # type = str
         self.__description = None                                   # type = str
 
 

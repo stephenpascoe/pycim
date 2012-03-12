@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.301151.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.355376.
 """
 
 # Module imports.
@@ -22,7 +22,7 @@ __all__ = ['ModelComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.301151$"
+__date__ ="$2012-03-12 10:45:20.355376$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -43,7 +43,7 @@ class ModelComponent(SoftwareComponent):
         self.__activity = None                                      # type = str
         self.__cim_info = CimInfo()                                 # type = shared.CimInfo
         self.__timing = None                                        # type = software.Timing
-        self.__types = []                                           # type = [software.str]
+        self.__types = []                                           # type = software.ModelComponentType
 
 
     @property

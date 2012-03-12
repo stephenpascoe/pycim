@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.266578.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.325864.
 """
 
 # Module imports.
@@ -22,7 +22,7 @@ __all__ = ['CimRelationship']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.266578$"
+__date__ ="$2012-03-12 10:45:20.325864$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -44,7 +44,7 @@ class CimRelationship(object):
         super(CimRelationship, self).__init__()
 
         self.__description = None                                   # type = str
-        self.__direction = str()                                    # type = shared.str
+        self.__direction = str()                                    # type = shared.CimRelationshipDirectionType
 
 
     @property

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.265038.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.324513.
 """
 
 # Module imports.
@@ -18,7 +18,7 @@ __all__ = ['CimReference']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.265038$"
+__date__ ="$2012-03-12 10:45:20.324513$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

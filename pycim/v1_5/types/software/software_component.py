@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.306514.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.362369.
 """
 
 # Module imports.
@@ -28,7 +28,7 @@ __all__ = ['SoftwareComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.306514$"
+__date__ ="$2012-03-12 10:45:20.362369$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -46,27 +46,27 @@ class SoftwareComponent(DataSource):
         """Constructor"""
         super(SoftwareComponent, self).__init__()
 
-        self.__child_components = []                                # type = [software.SoftwareComponent]
-        self.__citations = []                                       # type = [shared.Citation]
+        self.__child_components = []                                # type = software.SoftwareComponent
+        self.__citations = []                                       # type = shared.Citation
         self.__component_language = None                            # type = software.ComponentLanguage
-        self.__component_properties = []                            # type = [software.ComponentProperty]
+        self.__component_properties = []                            # type = software.ComponentProperty
         self.__composition = None                                   # type = software.Composition
-        self.__coupling_framework = None                            # type = software.str
-        self.__dependencies = []                                    # type = [software.EntryPoint]
-        self.__deployments = []                                     # type = [software.Deployment]
+        self.__coupling_framework = None                            # type = software.CouplingFrameworkType
+        self.__dependencies = []                                    # type = software.EntryPoint
+        self.__deployments = []                                     # type = software.Deployment
         self.__description = None                                   # type = str
-        self.__funding_sources = []                                 # type = [str]
+        self.__funding_sources = []                                 # type = str
         self.__grid = None                                          # type = str
         self.__is_embedded = None                                   # type = bool
         self.__license = None                                       # type = shared.License
         self.__long_name = None                                     # type = str
-        self.__numerical_properties = []                            # type = [software.ComponentProperty]
+        self.__numerical_properties = []                            # type = software.ComponentProperty
         self.__online_resource = None                               # type = str
         self.__parent_component = None                              # type = software.SoftwareComponent
         self.__previous_version = None                              # type = str
         self.__release_date = None                                  # type = datetime.datetime
-        self.__responsible_parties = []                             # type = [shared.ResponsibleParty]
-        self.__scientific_properties = []                           # type = [software.ComponentProperty]
+        self.__responsible_parties = []                             # type = shared.ResponsibleParty
+        self.__scientific_properties = []                           # type = software.ComponentProperty
         self.__short_name = str()                                   # type = str
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.262879.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.321960.
 """
 
 # Module imports.
@@ -23,7 +23,7 @@ __all__ = ['CimInfo']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.262879$"
+__date__ ="$2012-03-12 10:45:20.321960$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -43,13 +43,13 @@ class CimInfo(object):
 
         self.__author = None                                        # type = shared.ResponsibleParty
         self.__create_date = datetime.datetime.now()                # type = datetime.datetime
-        self.__external_id = []                                     # type = [shared.str]
+        self.__external_id = []                                     # type = shared.StandardName
         self.__genealogy = None                                     # type = shared.CimGenealogy
         self.__id = uuid.uuid4()                                    # type = uuid.UUID
         self.__metadata_id = None                                   # type = str
         self.__metadata_version = None                              # type = str
-        self.__quality = []                                         # type = [str]
-        self.__status = None                                        # type = shared.str
+        self.__quality = []                                         # type = str
+        self.__status = None                                        # type = shared.DocumentStatusType
         self.__type_info = None                                     # type = shared.CimTypeInfo
         self.__version = str()                                      # type = str
 

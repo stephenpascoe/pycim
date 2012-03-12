@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-02-15 15:48:21.295582.
+CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.349497.
 """
 
 # Module imports.
@@ -20,7 +20,7 @@ __all__ = ['Coupling']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-02-15 15:48:21.295582$"
+__date__ ="$2012-03-12 10:45:20.349497$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,19 +38,19 @@ class Coupling(object):
         """Constructor"""
         super(Coupling, self).__init__()
 
-        self.__connections = []                                     # type = [str]
-        self.__coupling_properties = []                             # type = [software.CouplingProperty]
-        self.__coupling_source = []                                 # type = [str]
+        self.__connections = []                                     # type = str
+        self.__coupling_properties = []                             # type = software.CouplingProperty
+        self.__coupling_source = []                                 # type = str
         self.__coupling_target = str()                              # type = str
         self.__description = None                                   # type = str
         self.__is_fully_specified = bool()                          # type = bool
         self.__priming = None                                       # type = str
-        self.__purpose = str()                                      # type = shared.str
-        self.__spatial_regridding = []                              # type = [str]
+        self.__purpose = str()                                      # type = shared.DataPurpose
+        self.__spatial_regridding = []                              # type = str
         self.__time_lag = None                                      # type = str
         self.__time_profile = None                                  # type = str
         self.__time_transformation = None                           # type = str
-        self.__transformers = []                                    # type = [str]
+        self.__transformers = []                                    # type = str
         self.__type = None                                          # type = str
 
 
