@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.314425.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.902198.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.data.data_storage import DataStorage
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['DataStorageFile']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.314425$"
+__date__ ="$2012-03-13 14:59:06.902198$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,9 +39,9 @@ class DataStorageFile(DataStorage):
         """Constructor"""
         super(DataStorageFile, self).__init__()
 
-        self.__file_name = None                                     # type = str
-        self.__file_system = None                                   # type = str
-        self.__path = None                                          # type = str
+        self.__file_name = str()                                    # type = str
+        self.__file_system = str()                                  # type = str
+        self.__path = str()                                         # type = str
 
 
     @property
@@ -119,6 +121,12 @@ class DataStorageFile(DataStorage):
         append(d, 'path', self.__path, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

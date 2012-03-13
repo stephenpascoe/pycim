@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.354086.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.946559.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['EntryPoint']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.354086$"
+__date__ ="$2012-03-13 14:59:06.946559$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,7 +38,7 @@ class EntryPoint(object):
         """Constructor"""
         super(EntryPoint, self).__init__()
 
-        self.__name = None                                          # type = str
+        self.__name = str()                                         # type = str
 
 
     @property
@@ -78,6 +80,12 @@ class EntryPoint(object):
         append(d, 'name', self.__name, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.309723.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.897484.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.property import Property
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['DataProperty']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.309723$"
+__date__ ="$2012-03-13 14:59:06.897484$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,7 +39,7 @@ class DataProperty(Property):
         """Constructor"""
         super(DataProperty, self).__init__()
 
-        self.__description = None                                   # type = str
+        self.__description = str()                                  # type = str
 
 
     @property
@@ -79,6 +81,12 @@ class DataProperty(Property):
         append(d, 'description', self.__description, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.346790.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.939499.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['Composition']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.346790$"
+__date__ ="$2012-03-13 14:59:06.939499$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,7 +39,7 @@ class Composition(object):
         super(Composition, self).__init__()
 
         self.__couplings = []                                       # type = str
-        self.__description = None                                   # type = str
+        self.__description = str()                                  # type = str
 
 
     @property
@@ -112,6 +114,12 @@ class Composition(object):
         append(d, 'description', self.__description, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

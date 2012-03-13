@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.334866.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.925607.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['Machine']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.334866$"
+__date__ ="$2012-03-13 14:59:06.925607$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,18 +38,18 @@ class Machine(object):
         """Constructor"""
         super(Machine, self).__init__()
 
-        self.__cores_per_processor = None                           # type = int
-        self.__description = None                                   # type = str
-        self.__interconnect = None                                  # type = str
+        self.__cores_per_processor = int()                          # type = int
+        self.__description = str()                                  # type = str
+        self.__interconnect = str()                                 # type = str
         self.__libraries = []                                       # type = str
-        self.__location = None                                      # type = str
-        self.__maximum_processors = None                            # type = int
-        self.__name = None                                          # type = str
-        self.__operating_system = None                              # type = str
-        self.__processor_type = None                                # type = str
-        self.__system = None                                        # type = str
-        self.__type = None                                          # type = str
-        self.__vendor = None                                        # type = str
+        self.__location = str()                                     # type = str
+        self.__maximum_processors = int()                           # type = int
+        self.__name = str()                                         # type = str
+        self.__operating_system = str()                             # type = str
+        self.__processor_type = str()                               # type = str
+        self.__system = str()                                       # type = str
+        self.__type = str()                                         # type = str
+        self.__vendor = str()                                       # type = str
 
 
     @property
@@ -316,6 +318,12 @@ class Machine(object):
         append(d, 'vendor', self.__vendor, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

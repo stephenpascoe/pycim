@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.307199.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.894753.
 """
 
 # Module imports.
@@ -9,18 +9,20 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
+from pycim.v1_5.types.shared.data_source import DataSource
+from pycim.v1_5.types.shared.cim_info import CimInfo
+from pycim.v1_5.types.shared.citation import Citation
 from pycim.v1_5.types.data.data_content import DataContent
+from pycim.v1_5.types.data.data_property import DataProperty
+from pycim.v1_5.types.data.data_status_type import DataStatusType
 from pycim.v1_5.types.data.data_distribution import DataDistribution
 from pycim.v1_5.types.data.data_extent import DataExtent
 from pycim.v1_5.types.data.data_hierarchy_level import DataHierarchyLevel
-from pycim.v1_5.types.data.data_property import DataProperty
-from pycim.v1_5.types.data.data_restriction import DataRestriction
-from pycim.v1_5.types.data.data_status_type import DataStatusType
-from pycim.v1_5.types.data.data_storage import DataStorage
-from pycim.v1_5.types.shared.cim_info import CimInfo
 from pycim.v1_5.types.shared.cim_reference import CimReference
-from pycim.v1_5.types.shared.citation import Citation
-from pycim.v1_5.types.shared.data_source import DataSource
+from pycim.v1_5.types.data.data_restriction import DataRestriction
+from pycim.v1_5.types.data.data_storage import DataStorage
+
 
 
 # Module exports.
@@ -30,7 +32,7 @@ __all__ = ['DataObject']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.307199$"
+__date__ ="$2012-03-13 14:59:06.894753$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -48,23 +50,23 @@ class DataObject(DataSource):
         """Constructor"""
         super(DataObject, self).__init__()
 
-        self.__acronym = None                                       # type = str
+        self.__acronym = str()                                      # type = str
         self.__child_object = []                                    # type = data.DataObject
-        self.__cim_info = CimInfo()                                 # type = shared.CimInfo
+        self.__cim_info = None                                      # type = shared.CimInfo
         self.__citations = []                                       # type = shared.Citation
         self.__content = []                                         # type = data.DataContent
         self.__data_property = []                                   # type = data.DataProperty
         self.__data_status = None                                   # type = data.DataStatusType
-        self.__description = None                                   # type = str
+        self.__description = str()                                  # type = str
         self.__distribution = None                                  # type = data.DataDistribution
         self.__extent = None                                        # type = data.DataExtent
-        self.__geometry_model = None                                # type = str
+        self.__geometry_model = str()                               # type = str
         self.__hierarchy_level = None                               # type = data.DataHierarchyLevel
-        self.__keyword = None                                       # type = str
+        self.__keyword = str()                                      # type = str
         self.__parent_object = None                                 # type = data.DataObject
         self.__parent_object_reference = None                       # type = shared.CimReference
         self.__restriction = []                                     # type = data.DataRestriction
-        self.__source_simulation = None                             # type = str
+        self.__source_simulation = str()                            # type = str
         self.__storage = []                                         # type = data.DataStorage
 
 
@@ -520,6 +522,12 @@ class DataObject(DataSource):
         append(d, 'storage', self.__storage, True, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

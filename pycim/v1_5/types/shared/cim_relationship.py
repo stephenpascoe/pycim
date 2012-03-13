@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.325864.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.914497.
 """
 
 # Module imports.
@@ -12,7 +12,9 @@ import datetime
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.cim_relationship_direction_type import CimRelationshipDirectionType
+
 
 
 # Module exports.
@@ -22,7 +24,7 @@ __all__ = ['CimRelationship']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.325864$"
+__date__ ="$2012-03-13 14:59:06.914497$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -43,8 +45,8 @@ class CimRelationship(object):
         """Constructor"""
         super(CimRelationship, self).__init__()
 
-        self.__description = None                                   # type = str
-        self.__direction = str()                                    # type = shared.CimRelationshipDirectionType
+        self.__description = str()                                  # type = str
+        self.__direction = None                                     # type = shared.CimRelationshipDirectionType
 
 
     @property
@@ -109,5 +111,10 @@ class CimRelationship(object):
 
 
 
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 

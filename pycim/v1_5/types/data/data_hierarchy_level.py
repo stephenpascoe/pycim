@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.303688.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.891044.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.data.data_hierarchy_type import DataHierarchyType
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['DataHierarchyLevel']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.303688$"
+__date__ ="$2012-03-13 14:59:06.891044$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,9 +39,9 @@ class DataHierarchyLevel(object):
         """Constructor"""
         super(DataHierarchyLevel, self).__init__()
 
-        self.__is_open = None                                       # type = bool
+        self.__is_open = bool()                                     # type = bool
         self.__name = None                                          # type = data.DataHierarchyType
-        self.__value = None                                         # type = str
+        self.__value = str()                                        # type = str
 
 
     @property
@@ -123,6 +125,12 @@ class DataHierarchyLevel(object):
         append(d, 'value', self.__value, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.324513.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.913113.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['CimReference']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.324513$"
+__date__ ="$2012-03-13 14:59:06.913113$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,13 +38,13 @@ class CimReference(object):
         """Constructor"""
         super(CimReference, self).__init__()
 
-        self.__change = None                                        # type = str
-        self.__description = None                                   # type = str
-        self.__external_id = None                                   # type = str
-        self.__id = None                                            # type = uuid.UUID
-        self.__name = None                                          # type = str
-        self.__type = None                                          # type = str
-        self.__version = None                                       # type = str
+        self.__change = str()                                       # type = str
+        self.__description = str()                                  # type = str
+        self.__external_id = str()                                  # type = str
+        self.__id = uuid.uuid4()                                    # type = uuid.UUID
+        self.__name = str()                                         # type = str
+        self.__type = str()                                         # type = str
+        self.__version = str()                                      # type = str
 
 
     @property
@@ -212,6 +214,12 @@ class CimReference(object):
         append(d, 'version', self.__version, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

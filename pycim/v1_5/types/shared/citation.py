@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.328953.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.917412.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.cim_reference import CimReference
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['Citation']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.328953$"
+__date__ ="$2012-03-13 14:59:06.917412$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,16 +39,16 @@ class Citation(object):
         """Constructor"""
         super(Citation, self).__init__()
 
-        self.__alternative_title = None                             # type = str
-        self.__collective_title = None                              # type = str
-        self.__date = None                                          # type = datetime.datetime
-        self.__date_type = None                                     # type = str
-        self.__location = None                                      # type = str
-        self.__organisation = None                                  # type = str
+        self.__alternative_title = str()                            # type = str
+        self.__collective_title = str()                             # type = str
+        self.__date = datetime.datetime.now()                       # type = datetime.datetime
+        self.__date_type = str()                                    # type = str
+        self.__location = str()                                     # type = str
+        self.__organisation = str()                                 # type = str
         self.__reference = None                                     # type = shared.CimReference
-        self.__role = None                                          # type = str
-        self.__title = None                                         # type = str
-        self.__type = None                                          # type = str
+        self.__role = str()                                         # type = str
+        self.__title = str()                                        # type = str
+        self.__type = str()                                         # type = str
 
 
     @property
@@ -259,6 +261,12 @@ class Citation(object):
         append(d, 'type', self.__type, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

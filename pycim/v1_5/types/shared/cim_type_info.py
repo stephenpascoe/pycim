@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.327010.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.915453.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['CimTypeInfo']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.327010$"
+__date__ ="$2012-03-13 14:59:06.915453$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -154,6 +156,12 @@ class CimTypeInfo(object):
         append(d, 'type_display_name', self.__type_display_name, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

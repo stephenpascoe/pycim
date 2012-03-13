@@ -202,22 +202,30 @@ def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_
     is_iterable -- flag indicating whether attribute is iterable or not.
 
     """
-    # Get attribute.
+    # Set target object / attribute.
     obj = target
     parts = attr.split('.')
     for i in range(len(parts) - 1):
         obj = getattr(obj, parts[i])
+    att_name = parts[len(parts) - 1]
 
     # Get attribute value.
     att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
 
-    # Escape if assigning null collections.
-    if is_iterable and len(att_value) == 0:
-        return
-
     # Set attribute value.
-    att_name = parts[len(parts) - 1]
-    setattr(obj, att_name, att_value)
+    if not is_iterable:
+        if is_simple_type:
+            setattr(obj, att_name, att_value)
+        else:
+            # ... do not overwrite previously assigned property values.
+            cur_obj = getattr(obj, att_name)
+            if cur_obj is None:
+                setattr(obj, att_name, att_value)
+    else:
+        if len(att_value) > 0:
+            m = getattr(obj, 'append_to_' + att_name)
+            for i in att_value:
+                m(i)
 
     # Support operation chaining.
     return target

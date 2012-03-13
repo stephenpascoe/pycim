@@ -1,31 +1,16 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.275496.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.830166.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
-from pycim.v1_5.types.shared.cim_document_relationship import CimDocumentRelationship
-from pycim.v1_5.types.shared.cim_document_relationship_target import CimDocumentRelationshipTarget
-from pycim.v1_5.types.shared.cim_genealogy import CimGenealogy
-from pycim.v1_5.types.shared.cim_info import CimInfo
-from pycim.v1_5.types.shared.cim_reference import CimReference
-from pycim.v1_5.types.shared.cim_relationship import CimRelationship
-from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
-from pycim.v1_5.types.shared.citation import Citation
-from pycim.v1_5.types.shared.compiler import Compiler
-from pycim.v1_5.types.shared.data_source import DataSource
-from pycim.v1_5.types.shared.license import License
-from pycim.v1_5.types.shared.machine import Machine
-from pycim.v1_5.types.shared.machine_compiler_unit import MachineCompilerUnit
-from pycim.v1_5.types.shared.platform import Platform
-from pycim.v1_5.types.shared.property import Property
-from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
-from pycim.v1_5.types.shared.responsible_party_contact_info import ResponsiblePartyContactInfo
+from pycim.v1_5.types.shared import *
 
 
 # Module exports.
 __all__ = [
+    "decode_calendar", 
     "decode_cim_document_relationship", 
     "decode_cim_document_relationship_target", 
     "decode_cim_genealogy", 
@@ -34,11 +19,14 @@ __all__ = [
     "decode_cim_relationship", 
     "decode_cim_type_info", 
     "decode_citation", 
+    "decode_closed_date_range", 
     "decode_compiler", 
     "decode_data_source", 
+    "decode_date_range", 
     "decode_license", 
     "decode_machine", 
     "decode_machine_compiler_unit", 
+    "decode_open_date_range", 
     "decode_platform", 
     "decode_property", 
     "decode_responsible_party", 
@@ -49,12 +37,26 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-12 10:45:20.275496"
+__date__ ="2012-03-13 14:59:06.830166"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
 __email__ = "momipsl@ipsl.jussieu.fr"
 __status__ = "Production"
+
+
+def decode_calendar(xml, nsmap):
+    """Decodes a calendar instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+    ]
+
+    return set_attributes(Calendar(), xml, nsmap, decodings)
 
 
 def decode_cim_document_relationship(xml, nsmap):
@@ -193,6 +195,23 @@ def decode_citation(xml, nsmap):
     return set_attributes(Citation(), xml, nsmap, decodings)
 
 
+def decode_closed_date_range(xml, nsmap):
+    """Decodes a closed date range instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('end', False, 'datetime', 'child::cim:endDate/text()'),
+        ('start', False, 'datetime', 'child::cim:startDate/text()'),
+        ('duration', False, 'str', 'child::cim:duration/text()'),
+    ]
+
+    return set_attributes(ClosedDateRange(), xml, nsmap, decodings)
+
+
 def decode_compiler(xml, nsmap):
     """Decodes a compiler instance from xml.
 
@@ -219,6 +238,21 @@ def decode_data_source(xml, nsmap):
     ]
 
     return set_attributes(DataSource(), xml, nsmap, decodings)
+
+
+def decode_date_range(xml, nsmap):
+    """Decodes a date range instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('duration', False, 'str', 'child::cim:duration/text()'),
+    ]
+
+    return set_attributes(DateRange(), xml, nsmap, decodings)
 
 
 def decode_license(xml, nsmap):
@@ -261,6 +295,23 @@ def decode_machine_compiler_unit(xml, nsmap):
     ]
 
     return set_attributes(MachineCompilerUnit(), xml, nsmap, decodings)
+
+
+def decode_open_date_range(xml, nsmap):
+    """Decodes a open date range instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('end', False, 'datetime', 'child::cim:endDate/text()'),
+        ('start', False, 'datetime', 'child::cim:startDate/text()'),
+        ('duration', False, 'str', 'child::cim:duration/text()'),
+    ]
+
+    return set_attributes(OpenDateRange(), xml, nsmap, decodings)
 
 
 def decode_platform(xml, nsmap):

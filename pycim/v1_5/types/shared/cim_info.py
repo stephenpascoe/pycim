@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.321960.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.910624.
 """
 
 # Module imports.
@@ -9,11 +9,13 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.cim_genealogy import CimGenealogy
-from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
-from pycim.v1_5.types.shared.document_status_type import DocumentStatusType
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 from pycim.v1_5.types.shared.standard_name import StandardName
+from pycim.v1_5.types.shared.cim_genealogy import CimGenealogy
+from pycim.v1_5.types.shared.document_status_type import DocumentStatusType
+from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
+
 
 
 # Module exports.
@@ -23,7 +25,7 @@ __all__ = ['CimInfo']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.321960$"
+__date__ ="$2012-03-13 14:59:06.910624$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -46,8 +48,9 @@ class CimInfo(object):
         self.__external_id = []                                     # type = shared.StandardName
         self.__genealogy = None                                     # type = shared.CimGenealogy
         self.__id = uuid.uuid4()                                    # type = uuid.UUID
-        self.__metadata_id = None                                   # type = str
-        self.__metadata_version = None                              # type = str
+        self.__metadata_id = str()                                  # type = str
+        self.__metadata_version = str()                             # type = str
+        self.__project = str()                                      # type = str
         self.__quality = []                                         # type = str
         self.__status = None                                        # type = shared.DocumentStatusType
         self.__type_info = None                                     # type = shared.CimTypeInfo
@@ -211,6 +214,28 @@ class CimInfo(object):
 
 
     @property
+    def project(self):
+        """Gets value of cim info project property.
+
+        Name of project that instance is associated with."""
+        return self.__project
+
+    @project.setter
+    def project(self, value):
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, str):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of cim info project property."""
+        self.__project = value
+
+    @project.deleter
+    def project(self, value):
+        """Deletes cim info project property."""
+        raise TypeError("Cannot delete cim info project property.")
+
+
+    @property
     def quality(self):
         """Gets value of {class-name} quality property.
 
@@ -331,12 +356,19 @@ class CimInfo(object):
         append(d, 'id', self.__id, False, True, False)
         append(d, 'metadata_id', self.__metadata_id, False, True, False)
         append(d, 'metadata_version', self.__metadata_version, False, True, False)
+        append(d, 'project', self.__project, False, True, False)
         append(d, 'quality', self.__quality, True, True, False)
         append(d, 'status', self.__status, False, False, True)
         append(d, 'type_info', self.__type_info, False, False, False)
         append(d, 'version', self.__version, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

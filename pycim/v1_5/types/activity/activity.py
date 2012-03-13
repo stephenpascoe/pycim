@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.287017.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.860333.
 """
 
 # Module imports.
@@ -12,8 +12,10 @@ import datetime
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.activity.project_type import ProjectType
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
+
 
 
 # Module exports.
@@ -23,7 +25,7 @@ __all__ = ['Activity']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.287017$"
+__date__ ="$2012-03-13 14:59:06.860333$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -220,5 +222,10 @@ class Activity(object):
 
 
 
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 

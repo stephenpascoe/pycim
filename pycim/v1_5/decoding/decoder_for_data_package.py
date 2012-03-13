@@ -1,30 +1,12 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.272732.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.827704.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_cim_info
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_cim_reference
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_citation
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_license
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_responsible_party
-from pycim.v1_5.types.data.data_content import DataContent
-from pycim.v1_5.types.data.data_distribution import DataDistribution
-from pycim.v1_5.types.data.data_extent import DataExtent
-from pycim.v1_5.types.data.data_extent_geographical import DataExtentGeographical
-from pycim.v1_5.types.data.data_extent_temporal import DataExtentTemporal
-from pycim.v1_5.types.data.data_extent_time_interval import DataExtentTimeInterval
-from pycim.v1_5.types.data.data_hierarchy_level import DataHierarchyLevel
-from pycim.v1_5.types.data.data_object import DataObject
-from pycim.v1_5.types.data.data_property import DataProperty
-from pycim.v1_5.types.data.data_restriction import DataRestriction
-from pycim.v1_5.types.data.data_storage import DataStorage
-from pycim.v1_5.types.data.data_storage_db import DataStorageDb
-from pycim.v1_5.types.data.data_storage_file import DataStorageFile
-from pycim.v1_5.types.data.data_storage_ip import DataStorageIp
-from pycim.v1_5.types.data.data_topic import DataTopic
+from pycim.v1_5.decoding.decoder_for_shared_package import *
+from pycim.v1_5.types.data import *
 
 
 # Module exports.
@@ -50,7 +32,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-12 10:45:20.272732"
+__date__ ="2012-03-13 14:59:06.827704"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

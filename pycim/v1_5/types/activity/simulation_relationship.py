@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.294110.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.880266.
 """
 
 # Module imports.
@@ -9,9 +9,11 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
+from pycim.v1_5.types.shared.cim_relationship import CimRelationship
 from pycim.v1_5.types.activity.simulation_relationship_target import SimulationRelationshipTarget
 from pycim.v1_5.types.activity.simulation_relationship_type import SimulationRelationshipType
-from pycim.v1_5.types.shared.cim_relationship import CimRelationship
+
 
 
 # Module exports.
@@ -21,7 +23,7 @@ __all__ = ['SimulationRelationship']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.294110$"
+__date__ ="$2012-03-13 14:59:06.880266$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -39,8 +41,8 @@ class SimulationRelationship(CimRelationship):
         """Constructor"""
         super(SimulationRelationship, self).__init__()
 
-        self.__target = SimulationRelationshipTarget()              # type = activity.SimulationRelationshipTarget
-        self.__type = str()                                         # type = activity.SimulationRelationshipType
+        self.__target = None                                        # type = activity.SimulationRelationshipTarget
+        self.__type = None                                          # type = activity.SimulationRelationshipType
 
 
     @property
@@ -105,6 +107,12 @@ class SimulationRelationship(CimRelationship):
         append(d, 'type', self.__type, False, False, True)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

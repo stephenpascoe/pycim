@@ -1,0 +1,63 @@
+<gridSpec xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="metafor940af628-700e-11e0-b4a3-00163e9152a5">
+    <esmModelGrid gridType="regular_lat_lon" id="" isLeaf="true" numTiles="1" numMosaics="0">
+        <shortName>atm_m45</shortName>
+        <longName>M45 Grid</longName>
+        <description>The M45 grid is used by the CM2.1 experiment.</description>
+        <gridTile discretizationType="logically_rectangular">
+            <extent>
+                <latMin>-90</latMin>
+                <latMax>90</latMax>
+                <lonMin>0</lonMin>
+                <lonMax>360</lonMax>
+            </extent>
+            <horizontalResolution description="2.5 degree longitude, 2 degree latitude . Refinement details: none">
+                <property>
+                    <value>90</value>
+                    <name>NumberOfLatitudinalGridCells</name>
+                </property>
+                <property>
+                    <value>144</value>
+                    <name>NumberOfLongitudinalGridCells</name>
+                </property>
+            </horizontalResolution>
+        <!--Vertical Domain specified as : atmospheric-->
+            <verticalResolution>
+                <property>
+                    <value>midpoint of top box is 3.65 hPa</value>
+                    <name>TopModelLevel</name>
+                </property>
+                <property>
+                    <value>8</value>
+                    <name>NumberOfLevelsBelow850hPa</name>
+                </property>
+                <property>
+                    <value>5</value>
+                    <name>NumberOfLevelsAbove200hPa</name>
+                </property>
+                <property>
+                    <value>24</value>
+                    <name>NumberOfLevels</name>
+                </property>
+            </verticalResolution>
+            <zcoords coordinateType="hybrid" coordinateForm="hybrid sigma-pressure">
+                <property>
+                    <value>see bk, pk fields in netCDF files</value>
+                    <name>Hybridization</name>
+                </property>
+            </zcoords>
+            <mnemonic>M45L24</mnemonic>
+        </gridTile>
+    </esmModelGrid>
+    <documentID>940af628-700e-11e0-b4a3-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-02-23T21:28:57.900341</documentCreationDate>
+</gridSpec>
+  

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.310786.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.898511.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.license import License
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['DataRestriction']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.310786$"
+__date__ ="$2012-03-13 14:59:06.898511$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,8 +40,8 @@ class DataRestriction(object):
         super(DataRestriction, self).__init__()
 
         self.__license = None                                       # type = shared.License
-        self.__restriction = None                                   # type = str
-        self.__scope = None                                         # type = str
+        self.__restriction = str()                                  # type = str
+        self.__scope = str()                                        # type = str
 
 
     @property
@@ -125,6 +127,12 @@ class DataRestriction(object):
         append(d, 'scope', self.__scope, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

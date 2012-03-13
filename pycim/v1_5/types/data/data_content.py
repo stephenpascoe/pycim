@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.296263.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.883477.
 """
 
 # Module imports.
@@ -9,8 +9,10 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.data.data_topic import DataTopic
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.data_source import DataSource
+from pycim.v1_5.types.data.data_topic import DataTopic
+
 
 
 # Module exports.
@@ -20,7 +22,7 @@ __all__ = ['DataContent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.296263$"
+__date__ ="$2012-03-13 14:59:06.883477$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,9 +40,9 @@ class DataContent(DataSource):
         """Constructor"""
         super(DataContent, self).__init__()
 
-        self.__aggregation = None                                   # type = str
-        self.__frequency = None                                     # type = str
-        self.__topic = DataTopic()                                  # type = data.DataTopic
+        self.__aggregation = str()                                  # type = str
+        self.__frequency = str()                                    # type = str
+        self.__topic = None                                         # type = data.DataTopic
 
 
     @property
@@ -126,6 +128,12 @@ class DataContent(DataSource):
         append(d, 'topic', self.__topic, False, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

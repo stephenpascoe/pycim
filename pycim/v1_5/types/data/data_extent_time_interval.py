@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.302564.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.889841.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['DataExtentTimeInterval']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.302564$"
+__date__ ="$2012-03-13 14:59:06.889841$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,9 +38,9 @@ class DataExtentTimeInterval(object):
         """Constructor"""
         super(DataExtentTimeInterval, self).__init__()
 
-        self.__factor = None                                        # type = int
-        self.__radix = None                                         # type = int
-        self.__unit = None                                          # type = str
+        self.__factor = int()                                       # type = int
+        self.__radix = int()                                        # type = int
+        self.__unit = str()                                         # type = str
 
 
     @property
@@ -118,6 +120,12 @@ class DataExtentTimeInterval(object):
         append(d, 'unit', self.__unit, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

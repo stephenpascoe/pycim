@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.357500.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.949508.
 """
 
 # Module imports.
@@ -9,8 +9,10 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.cim_info import CimInfo
+# Intra/Inter-package imports.
 from pycim.v1_5.types.software.software_component import SoftwareComponent
+from pycim.v1_5.types.shared.cim_info import CimInfo
+
 
 
 # Module exports.
@@ -20,7 +22,7 @@ __all__ = ['ProcessorComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.357500$"
+__date__ ="$2012-03-13 14:59:06.949508$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +40,7 @@ class ProcessorComponent(SoftwareComponent):
         """Constructor"""
         super(ProcessorComponent, self).__init__()
 
-        self.__cim_info = CimInfo()                                 # type = shared.CimInfo
+        self.__cim_info = None                                      # type = shared.CimInfo
 
 
     @property
@@ -82,6 +84,12 @@ class ProcessorComponent(SoftwareComponent):
         append(d, 'cim_info', self.__cim_info, False, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.292780.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.877436.
 """
 
 # Module imports.
@@ -9,8 +9,11 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.activity.experiment import Experiment
 from pycim.v1_5.types.shared.cim_info import CimInfo
+from pycim.v1_5.types.activity.numerical_requirement import NumericalRequirement
+
 
 
 # Module exports.
@@ -20,7 +23,7 @@ __all__ = ['NumericalExperiment']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.292780$"
+__date__ ="$2012-03-13 14:59:06.877436$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,10 +41,11 @@ class NumericalExperiment(Experiment):
         """Constructor"""
         super(NumericalExperiment, self).__init__()
 
-        self.__cim_info = CimInfo()                                 # type = shared.CimInfo
-        self.__description = None                                   # type = str
-        self.__experiment_id = None                                 # type = str
-        self.__long_name = None                                     # type = str
+        self.__cim_info = None                                      # type = shared.CimInfo
+        self.__description = str()                                  # type = str
+        self.__experiment_id = str()                                # type = str
+        self.__long_name = str()                                    # type = str
+        self.__requirements = []                                    # type = activity.NumericalRequirement
         self.__short_name = str()                                   # type = str
 
 
@@ -126,6 +130,42 @@ class NumericalExperiment(Experiment):
 
 
     @property
+    def requirements(self):
+        """Gets value of {class-name} requirements property.
+
+        The name of the experiment (that is used internally)."""
+        return list(self.__requirements)
+
+    @requirements.setter
+    def requirements(self, value):
+        """Sets value of {class-name} requirements property.
+
+        The name of the experiment (that is used internally)."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__requirements = []
+        for i in value:
+            self.append_to_requirements(i)
+
+    @requirements.deleter
+    def requirements(self, value):
+        """Deletes {class-name} requirements property."""
+        raise TypeError("Cannot delete {class-name} requirements property.")
+
+    def append_to_requirements(self, item):
+        """Appends an item to the managed {class-name} requirements collection."""
+        if not isinstance(item, NumericalRequirement):
+            raise TypeError("item is of incorrect type.")
+        self.__requirements.append(item)
+
+    def remove_from_requirements(self, item):
+        """Removes an item from the managed {class-name} requirements collection."""
+        if not isinstance(item, NumericalRequirement):
+            raise TypeError("item is of incorrect type.")
+        self.__requirements.remove(item)
+
+
+    @property
     def short_name(self):
         """Gets value of numerical experiment short_name property.
 
@@ -169,9 +209,16 @@ class NumericalExperiment(Experiment):
         append(d, 'description', self.__description, False, True, False)
         append(d, 'experiment_id', self.__experiment_id, False, True, False)
         append(d, 'long_name', self.__long_name, False, True, False)
+        append(d, 'requirements', self.__requirements, True, False, False)
         append(d, 'short_name', self.__short_name, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,28 +1,12 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.277712.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.832510.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_cim_info
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_citation
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_license
-from pycim.v1_5.decoding.decoder_for_shared_package import decode_responsible_party
-from pycim.v1_5.types.software.component_language import ComponentLanguage
-from pycim.v1_5.types.software.component_language_property import ComponentLanguageProperty
-from pycim.v1_5.types.software.component_property import ComponentProperty
-from pycim.v1_5.types.software.composition import Composition
-from pycim.v1_5.types.software.coupling import Coupling
-from pycim.v1_5.types.software.coupling_property import CouplingProperty
-from pycim.v1_5.types.software.deployment import Deployment
-from pycim.v1_5.types.software.entry_point import EntryPoint
-from pycim.v1_5.types.software.model_component import ModelComponent
-from pycim.v1_5.types.software.parallelisation import Parallelisation
-from pycim.v1_5.types.software.processor_component import ProcessorComponent
-from pycim.v1_5.types.software.rank import Rank
-from pycim.v1_5.types.software.software_component import SoftwareComponent
-from pycim.v1_5.types.software.timing import Timing
+from pycim.v1_5.decoding.decoder_for_shared_package import *
+from pycim.v1_5.types.software import *
 
 
 # Module exports.
@@ -47,7 +31,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-12 10:45:20.277712"
+__date__ ="2012-03-13 14:59:06.832510"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

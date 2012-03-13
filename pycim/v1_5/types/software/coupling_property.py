@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.351529.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.944164.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.property import Property
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['CouplingProperty']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.351529$"
+__date__ ="$2012-03-13 14:59:06.944164$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -59,6 +61,12 @@ class CouplingProperty(Property):
         d = dict(super(CouplingProperty, self).as_dict())
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

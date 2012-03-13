@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.362369.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.954449.
 """
 
 # Module imports.
@@ -9,16 +9,18 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.citation import Citation
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.data_source import DataSource
-from pycim.v1_5.types.shared.license import License
-from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
+from pycim.v1_5.types.shared.citation import Citation
 from pycim.v1_5.types.software.component_language import ComponentLanguage
 from pycim.v1_5.types.software.component_property import ComponentProperty
 from pycim.v1_5.types.software.composition import Composition
 from pycim.v1_5.types.software.coupling_framework_type import CouplingFrameworkType
-from pycim.v1_5.types.software.deployment import Deployment
 from pycim.v1_5.types.software.entry_point import EntryPoint
+from pycim.v1_5.types.software.deployment import Deployment
+from pycim.v1_5.types.shared.license import License
+from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
+
 
 
 # Module exports.
@@ -28,7 +30,7 @@ __all__ = ['SoftwareComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.362369$"
+__date__ ="$2012-03-13 14:59:06.954449$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -54,17 +56,17 @@ class SoftwareComponent(DataSource):
         self.__coupling_framework = None                            # type = software.CouplingFrameworkType
         self.__dependencies = []                                    # type = software.EntryPoint
         self.__deployments = []                                     # type = software.Deployment
-        self.__description = None                                   # type = str
+        self.__description = str()                                  # type = str
         self.__funding_sources = []                                 # type = str
-        self.__grid = None                                          # type = str
-        self.__is_embedded = None                                   # type = bool
+        self.__grid = str()                                         # type = str
+        self.__is_embedded = bool()                                 # type = bool
         self.__license = None                                       # type = shared.License
-        self.__long_name = None                                     # type = str
+        self.__long_name = str()                                    # type = str
         self.__numerical_properties = []                            # type = software.ComponentProperty
-        self.__online_resource = None                               # type = str
+        self.__online_resource = str()                              # type = str
         self.__parent_component = None                              # type = software.SoftwareComponent
-        self.__previous_version = None                              # type = str
-        self.__release_date = None                                  # type = datetime.datetime
+        self.__previous_version = str()                             # type = str
+        self.__release_date = datetime.datetime.now()               # type = datetime.datetime
         self.__responsible_parties = []                             # type = shared.ResponsibleParty
         self.__scientific_properties = []                           # type = software.ComponentProperty
         self.__short_name = str()                                   # type = str
@@ -670,6 +672,12 @@ class SoftwareComponent(DataSource):
         append(d, 'short_name', self.__short_name, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

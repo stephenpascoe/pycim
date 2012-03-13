@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.365313.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.956448.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.software.timing_units import TimingUnits
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['Timing']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.365313$"
+__date__ ="$2012-03-13 14:59:06.956448$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,11 +39,11 @@ class Timing(object):
         """Constructor"""
         super(Timing, self).__init__()
 
-        self.__end = None                                           # type = datetime.datetime
-        self.__rate = None                                          # type = int
-        self.__start = None                                         # type = datetime.datetime
+        self.__end = datetime.datetime.now()                        # type = datetime.datetime
+        self.__rate = int()                                         # type = int
+        self.__start = datetime.datetime.now()                      # type = datetime.datetime
         self.__units = None                                         # type = software.TimingUnits
-        self.__variable_rate = None                                 # type = bool
+        self.__variable_rate = bool()                               # type = bool
 
 
     @property
@@ -161,6 +163,12 @@ class Timing(object):
         append(d, 'variable_rate', self.__variable_rate, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.358484.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.950580.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['Rank']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.358484$"
+__date__ ="$2012-03-13 14:59:06.950580$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,10 +38,10 @@ class Rank(object):
         """Constructor"""
         super(Rank, self).__init__()
 
-        self.__increment = None                                     # type = int
-        self.__max = None                                           # type = int
-        self.__min = None                                           # type = int
-        self.__value = None                                         # type = int
+        self.__increment = int()                                    # type = int
+        self.__max = int()                                          # type = int
+        self.__min = int()                                          # type = int
+        self.__value = int()                                        # type = int
 
 
     @property
@@ -138,6 +140,12 @@ class Rank(object):
         append(d, 'value', self.__value, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.345037.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.937684.
 """
 
 # Module imports.
@@ -9,10 +9,12 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.citation import Citation
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.data_source import DataSource
-from pycim.v1_5.types.shared.unit_type import UnitType
+from pycim.v1_5.types.shared.citation import Citation
 from pycim.v1_5.types.software.component_property_intent_type import ComponentPropertyIntentType
+from pycim.v1_5.types.shared.unit_type import UnitType
+
 
 
 # Module exports.
@@ -22,7 +24,7 @@ __all__ = ['ComponentProperty']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.345037$"
+__date__ ="$2012-03-13 14:59:06.937684$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -42,15 +44,15 @@ class ComponentProperty(DataSource):
 
         self.__citations = []                                       # type = shared.Citation
         self.__component_properties = []                            # type = software.ComponentProperty
-        self.__description = None                                   # type = str
-        self.__grid = None                                          # type = str
+        self.__description = str()                                  # type = str
+        self.__grid = str()                                         # type = str
         self.__intent = None                                        # type = software.ComponentPropertyIntentType
         self.__is_represented = bool()                              # type = bool
-        self.__long_name = None                                     # type = str
+        self.__long_name = str()                                    # type = str
         self.__short_name = str()                                   # type = str
         self.__standard_names = []                                  # type = str
         self.__units = None                                         # type = shared.UnitType
-        self.__value = None                                         # type = str
+        self.__value = str()                                        # type = str
         self.__values = []                                          # type = str
 
 
@@ -374,6 +376,12 @@ class ComponentProperty(DataSource):
         append(d, 'values', self.__values, True, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

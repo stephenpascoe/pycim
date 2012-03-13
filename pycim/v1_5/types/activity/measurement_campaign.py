@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.291524.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.876637.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.activity.activity import Activity
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['MeasurementCampaign']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.291524$"
+__date__ ="$2012-03-13 14:59:06.876637$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -81,6 +83,12 @@ class MeasurementCampaign(Activity):
         append(d, 'duration', self.__duration, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

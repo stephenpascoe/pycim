@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.349497.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.941968.
 """
 
 # Module imports.
@@ -9,8 +9,10 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.data_purpose import DataPurpose
+# Intra/Inter-package imports.
 from pycim.v1_5.types.software.coupling_property import CouplingProperty
+from pycim.v1_5.types.shared.data_purpose import DataPurpose
+
 
 
 # Module exports.
@@ -20,7 +22,7 @@ __all__ = ['Coupling']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.349497$"
+__date__ ="$2012-03-13 14:59:06.941968$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -42,16 +44,16 @@ class Coupling(object):
         self.__coupling_properties = []                             # type = software.CouplingProperty
         self.__coupling_source = []                                 # type = str
         self.__coupling_target = str()                              # type = str
-        self.__description = None                                   # type = str
+        self.__description = str()                                  # type = str
         self.__is_fully_specified = bool()                          # type = bool
-        self.__priming = None                                       # type = str
-        self.__purpose = str()                                      # type = shared.DataPurpose
+        self.__priming = str()                                      # type = str
+        self.__purpose = None                                       # type = shared.DataPurpose
         self.__spatial_regridding = []                              # type = str
-        self.__time_lag = None                                      # type = str
-        self.__time_profile = None                                  # type = str
-        self.__time_transformation = None                           # type = str
+        self.__time_lag = str()                                     # type = str
+        self.__time_profile = str()                                 # type = str
+        self.__time_transformation = str()                          # type = str
         self.__transformers = []                                    # type = str
-        self.__type = None                                          # type = str
+        self.__type = str()                                         # type = str
 
 
     @property
@@ -442,6 +444,12 @@ class Coupling(object):
         append(d, 'type', self.__type, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

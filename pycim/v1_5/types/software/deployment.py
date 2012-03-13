@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.352877.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.945410.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['Deployment']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.352877$"
+__date__ ="$2012-03-13 14:59:06.945410$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,12 +38,12 @@ class Deployment(object):
         """Constructor"""
         super(Deployment, self).__init__()
 
-        self.__deployment_date = None                               # type = datetime.datetime
-        self.__description = None                                   # type = str
+        self.__deployment_date = datetime.datetime.now()            # type = datetime.datetime
+        self.__description = str()                                  # type = str
         self.__executable_argument = []                             # type = str
-        self.__executable_name = None                               # type = str
-        self.__parallelisation = None                               # type = str
-        self.__platform = None                                      # type = str
+        self.__executable_name = str()                              # type = str
+        self.__parallelisation = str()                              # type = str
+        self.__platform = str()                                     # type = str
 
 
     @property
@@ -194,6 +196,12 @@ class Deployment(object):
         append(d, 'platform', self.__platform, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

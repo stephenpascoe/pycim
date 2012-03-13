@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.312025.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.899705.
 """
 
 # Module imports.
@@ -12,6 +12,8 @@ import datetime
 import types
 import uuid
 
+# Intra/Inter-package imports.
+
 
 
 # Module exports.
@@ -21,7 +23,7 @@ __all__ = ['DataStorage']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.312025$"
+__date__ ="$2012-03-13 14:59:06.899705$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -42,10 +44,10 @@ class DataStorage(object):
         """Constructor"""
         super(DataStorage, self).__init__()
 
-        self.__format = None                                        # type = str
-        self.__location = None                                      # type = str
-        self.__modification_date = None                             # type = datetime.datetime
-        self.__size = None                                          # type = int
+        self.__format = str()                                       # type = str
+        self.__location = str()                                     # type = str
+        self.__modification_date = datetime.datetime.now()          # type = datetime.datetime
+        self.__size = int()                                         # type = int
 
 
     @property
@@ -146,5 +148,10 @@ class DataStorage(object):
 
 
 
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.330774.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.920707.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.compiler_type import CompilerType
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['Compiler']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.330774$"
+__date__ ="$2012-03-13 14:59:06.920707$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,12 +39,12 @@ class Compiler(object):
         """Constructor"""
         super(Compiler, self).__init__()
 
-        self.__environment_variables = None                         # type = str
-        self.__language = None                                      # type = str
-        self.__name = None                                          # type = str
-        self.__options = None                                       # type = str
+        self.__environment_variables = str()                        # type = str
+        self.__language = str()                                     # type = str
+        self.__name = str()                                         # type = str
+        self.__options = str()                                      # type = str
         self.__type = None                                          # type = shared.CompilerType
-        self.__version = None                                       # type = str
+        self.__version = str()                                      # type = str
 
 
     @property
@@ -183,6 +185,12 @@ class Compiler(object):
         append(d, 'version', self.__version, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

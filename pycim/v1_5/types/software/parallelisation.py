@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.356563.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.948592.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.software.rank import Rank
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['Parallelisation']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.356563$"
+__date__ ="$2012-03-13 14:59:06.948592$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -115,6 +117,12 @@ class Parallelisation(object):
         append(d, 'ranks', self.__ranks, True, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.300230.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.887374.
 """
 
 # Module imports.
@@ -8,6 +8,8 @@ import datetime
 import simplejson
 import types
 import uuid
+
+# Intra/Inter-package imports.
 
 
 
@@ -18,7 +20,7 @@ __all__ = ['DataExtentGeographical']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.300230$"
+__date__ ="$2012-03-13 14:59:06.887374$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -36,10 +38,10 @@ class DataExtentGeographical(object):
         """Constructor"""
         super(DataExtentGeographical, self).__init__()
 
-        self.__east = None                                          # type = float
-        self.__north = None                                         # type = float
-        self.__south = None                                         # type = float
-        self.__west = None                                          # type = float
+        self.__east = float()                                       # type = float
+        self.__north = float()                                      # type = float
+        self.__south = float()                                      # type = float
+        self.__west = float()                                       # type = float
 
 
     @property
@@ -138,6 +140,12 @@ class DataExtentGeographical(object):
         append(d, 'west', self.__west, False, True, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

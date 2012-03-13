@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.355376.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.947600.
 """
 
 # Module imports.
@@ -9,10 +9,12 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.cim_info import CimInfo
-from pycim.v1_5.types.software.model_component_type import ModelComponentType
+# Intra/Inter-package imports.
 from pycim.v1_5.types.software.software_component import SoftwareComponent
+from pycim.v1_5.types.shared.cim_info import CimInfo
 from pycim.v1_5.types.software.timing import Timing
+from pycim.v1_5.types.software.model_component_type import ModelComponentType
+
 
 
 # Module exports.
@@ -22,7 +24,7 @@ __all__ = ['ModelComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.355376$"
+__date__ ="$2012-03-13 14:59:06.947600$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,8 +42,8 @@ class ModelComponent(SoftwareComponent):
         """Constructor"""
         super(ModelComponent, self).__init__()
 
-        self.__activity = None                                      # type = str
-        self.__cim_info = CimInfo()                                 # type = shared.CimInfo
+        self.__activity = str()                                     # type = str
+        self.__cim_info = None                                      # type = shared.CimInfo
         self.__timing = None                                        # type = software.Timing
         self.__types = []                                           # type = software.ModelComponentType
 
@@ -164,6 +166,12 @@ class ModelComponent(SoftwareComponent):
         append(d, 'types', self.__types, True, False, True)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

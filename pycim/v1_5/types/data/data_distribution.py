@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.297498.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.884763.
 """
 
 # Module imports.
@@ -9,7 +9,9 @@ import simplejson
 import types
 import uuid
 
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
+
 
 
 # Module exports.
@@ -19,7 +21,7 @@ __all__ = ['DataDistribution']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.297498$"
+__date__ ="$2012-03-13 14:59:06.884763$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -37,9 +39,9 @@ class DataDistribution(object):
         """Constructor"""
         super(DataDistribution, self).__init__()
 
-        self.__access = None                                        # type = str
-        self.__fee = None                                           # type = str
-        self.__format = None                                        # type = str
+        self.__access = str()                                       # type = str
+        self.__fee = str()                                          # type = str
+        self.__format = str()                                       # type = str
         self.__responsible_party = None                             # type = shared.ResponsibleParty
 
 
@@ -139,6 +141,12 @@ class DataDistribution(object):
         append(d, 'responsible_party', self.__responsible_party, False, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 

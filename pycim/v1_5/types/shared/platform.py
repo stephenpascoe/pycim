@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-12 10:45:20.338323.
+CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.929704.
 """
 
 # Module imports.
@@ -9,8 +9,10 @@ import simplejson
 import types
 import uuid
 
-from pycim.v1_5.types.shared.machine_compiler_unit import MachineCompilerUnit
+# Intra/Inter-package imports.
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
+from pycim.v1_5.types.shared.machine_compiler_unit import MachineCompilerUnit
+
 
 
 # Module exports.
@@ -20,7 +22,7 @@ __all__ = ['Platform']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-12 10:45:20.338323$"
+__date__ ="$2012-03-13 14:59:06.929704$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -39,9 +41,9 @@ class Platform(object):
         super(Platform, self).__init__()
 
         self.__contact = []                                         # type = shared.ResponsibleParty
-        self.__description = None                                   # type = str
-        self.__long_name = None                                     # type = str
-        self.__short_name = None                                    # type = str
+        self.__description = str()                                  # type = str
+        self.__long_name = str()                                    # type = str
+        self.__short_name = str()                                   # type = str
         self.__unit = None                                          # type = shared.MachineCompilerUnit
 
 
@@ -174,6 +176,12 @@ class Platform(object):
         append(d, 'unit', self.__unit, False, False, False)
         return d
 
+
+
+
+
+# Circular reference imports.
+# N.B. - see http://effbot.org/zone/import-confusion.htm.
 
 
 
