@@ -1,6 +1,6 @@
 """An enumeration within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.958695.
+CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.111920.
 """
 
 # Module exports.
@@ -10,7 +10,7 @@ __all__ = ['SimulationType']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-13 14:59:06.958695$"
+__date__ ="$2012-03-20 16:28:50.111920$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

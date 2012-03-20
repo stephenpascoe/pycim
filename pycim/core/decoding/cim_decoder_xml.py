@@ -1,7 +1,6 @@
 """CIM xml decoding functions.
 
 """
-
 # Module imports.
 from lxml import etree as et
 
@@ -9,9 +8,7 @@ from pycim.core.decoding.cim_decoder_xml_utils import get_cim_xml
 from pycim.core.decoding.cim_decoder_xml_utils import decode_xml
 from pycim.core.cim_exception import CIMException
 from pycim.core.cim_constants import CIM_VERSIONS
-from pycim.v1_5.decoding import decode_data_object as decode_v1_5_data_object
-from pycim.v1_5.decoding import decode_model_component as decode_v1_5_model_component
-from pycim.v1_5.decoding import decode_numerical_experiment as decode_v1_5_numerical_experiment
+import pycim.v1_5.decoding as v1_5_decoders
 from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
 
 
@@ -33,9 +30,14 @@ __status__ = "Production"
 # Set of decoders grouped by cim version.
 _decoders = {
     '1.5' : {
-        'dataObject' : decode_v1_5_data_object,
-        'modelComponent' : decode_v1_5_model_component,
-        'numericalExperiment' : decode_v1_5_numerical_experiment,
+        'dataObject' : v1_5_decoders.decode_data_object,
+        'ensemble' : v1_5_decoders.decode_ensemble,
+        'gridSpec' : v1_5_decoders.decode_grid_spec,
+        'modelComponent' : v1_5_decoders.decode_model_component,
+        'numericalExperiment' : v1_5_decoders.decode_numerical_experiment,
+        'platform' : v1_5_decoders.decode_platform,
+        'simulationRun' : v1_5_decoders.decode_simulation_run,
+        'simulationComposite' : v1_5_decoders.decode_simulation_composite,
     }
 }
 

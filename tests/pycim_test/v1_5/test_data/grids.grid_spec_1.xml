@@ -1,0 +1,86 @@
+<gridSpec xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="metafor6d73025c-1dbc-11e0-8e5f-00163e9152a5">
+    <esmModelGrid gridType="tripolar" id="" isLeaf="true" numTiles="1" numMosaics="0">
+        <shortName>HYCOM ocean</shortName>
+        <longName>Grid for HYCOM ocean component</longName>
+        <description>Tripolar grid</description>
+        <gridTile discretizationType="logically_rectangular">
+            <extent>
+                <latMin>-90</latMin>
+                <latMax>90</latMax>
+                <lonMin>-180</lonMin>
+                <lonMax>180</lonMax>
+            </extent>
+            <horizontalResolution description="0.2 to 1 deg latitude x 1 deg longitude. Refinement details: latitudinally varying according to cos(lat) from poles to tropics, with a further refinement to 0.3 deg from 10S to 10N">
+                <property>
+                    <value>-90</value>
+                    <name>ThirdPoleLat</name>
+                </property>
+                <property>
+                    <value>0</value>
+                    <name>ThirdPoleLon</name>
+                </property>
+                <property>
+                    <value>56.9</value>
+                    <name>FirstPoleLat</name>
+                </property>
+                <property>
+                    <value>56.9</value>
+                    <name>SecondPoleLat</name>
+                </property>
+                <property>
+                    <value>387</value>
+                    <name>NumberOfCellsInFirstGridDimension</name>
+                </property>
+                <property>
+                    <value>360</value>
+                    <name>NumberOfCellsInSecondGridDimension</name>
+                </property>
+                <property>
+                    <value>70</value>
+                    <name>SecondPoleLon</name>
+                </property>
+                <property>
+                    <value>-110</value>
+                    <name>FirstPoleLon</name>
+                </property>
+            </horizontalResolution>
+        <!--Vertical Domain specified as : oceanic-->
+            <verticalResolution>
+                <property>
+                    <value>varies (maximum of 9)</value>
+                    <name>NumberOfLevelsInUpper100m</name>
+                </property>
+                <property>
+                    <value>0 m</value>
+                    <name>UpperLevel</name>
+                </property>
+                <property>
+                    <value>7749 m</value>
+                    <name>LowerLevel</name>
+                </property>
+                <property>
+                    <value>26</value>
+                    <name>NumberOfLevels</name>
+                </property>
+            </verticalResolution>
+            <zcoords coordinateType="hybrid" coordinateForm="hybrid Z-isopycnic">
+                <property>
+                    <value>level 1 is constant thickness (5m), other levels have minimum thickness and target densities (See Sun and Bleck, 2006)</value>
+                    <name>Hybridization</name>
+                </property>
+            </zcoords>
+            <mnemonic>HYCOM</mnemonic>
+        </gridTile>
+    </esmModelGrid>
+    <documentID>6d73025c-1dbc-11e0-8e5f-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-03-17T02:46:51.020514</documentCreationDate>
+</gridSpec>

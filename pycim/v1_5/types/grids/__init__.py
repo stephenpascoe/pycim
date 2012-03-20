@@ -1,19 +1,21 @@
 """A set of cim 1.5 entities.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.840200.
+CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.003165.
 """
 
 # Module imports.
+from pycim.v1_5.types.grids.grid_mosaic import GridMosaic
+from pycim.v1_5.types.grids.grid_spec import GridSpec
 
 
 # Module exports.
-__all__ = []
+__all__ = ['GridMosaic', 'GridSpec']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-13 14:59:06.840200"
+__date__ ="2012-03-20 16:28:50.003165"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

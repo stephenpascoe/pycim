@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.929704.
+CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.080624.
 """
 
 # Module imports.
@@ -10,6 +10,7 @@ import types
 import uuid
 
 # Intra/Inter-package imports.
+from pycim.v1_5.types.shared.cim_info import CimInfo
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 from pycim.v1_5.types.shared.machine_compiler_unit import MachineCompilerUnit
 
@@ -22,7 +23,7 @@ __all__ = ['Platform']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-13 14:59:06.929704$"
+__date__ ="$2012-03-20 16:28:50.080624$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,11 +41,32 @@ class Platform(object):
         """Constructor"""
         super(Platform, self).__init__()
 
+        self.__cim_info = None                                      # type = shared.CimInfo
         self.__contact = []                                         # type = shared.ResponsibleParty
         self.__description = str()                                  # type = str
         self.__long_name = str()                                    # type = str
         self.__short_name = str()                                   # type = str
         self.__unit = None                                          # type = shared.MachineCompilerUnit
+
+
+    @property
+    def cim_info(self):
+        """Gets value of platform cim_info property."""
+        return self.__cim_info
+
+    @cim_info.setter
+    def cim_info(self, value):
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, CimInfo):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of platform cim_info property."""
+        self.__cim_info = value
+
+    @cim_info.deleter
+    def cim_info(self, value):
+        """Deletes platform cim_info property."""
+        raise TypeError("Cannot delete platform cim_info property.")
 
 
     @property
@@ -169,6 +191,7 @@ class Platform(object):
 
         # Populate a deep dictionary.
         d = dict()
+        append(d, 'cim_info', self.__cim_info, False, False, False)
         append(d, 'contact', self.__contact, True, False, False)
         append(d, 'description', self.__description, False, True, False)
         append(d, 'long_name', self.__long_name, False, True, False)

@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-13 14:59:06.830166.
+CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:49.993741.
 """
 
 # Module imports.
@@ -37,7 +37,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-13 14:59:06.830166"
+__date__ ="2012-03-20 16:28:49.993741"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -323,6 +323,10 @@ def decode_platform(xml, nsmap):
 
     """
     decodings = [
+        ('cim_info', False, decode_cim_info, 'self::cim:platform'),
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('long_name', False, 'str', 'child::cim:longName/text()'),
+        ('short_name', False, 'str', 'child::cim:shortName/text()'),
     ]
 
     return set_attributes(Platform(), xml, nsmap, decodings)
