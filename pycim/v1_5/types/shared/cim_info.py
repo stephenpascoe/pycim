@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.060959.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.777027.
 """
 
 # Module imports.
@@ -25,7 +25,7 @@ __all__ = ['CimInfo']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-20 16:28:50.060959$"
+__date__ ="$2012-03-26 18:08:48.777027$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -45,7 +45,7 @@ class CimInfo(object):
 
         self.__author = None                                        # type = shared.ResponsibleParty
         self.__create_date = datetime.datetime.now()                # type = datetime.datetime
-        self.__external_id = []                                     # type = shared.StandardName
+        self.__external_ids = []                                    # type = shared.StandardName
         self.__genealogy = None                                     # type = shared.CimGenealogy
         self.__id = uuid.uuid4()                                    # type = uuid.UUID
         self.__metadata_id = str()                                  # type = str
@@ -100,39 +100,39 @@ class CimInfo(object):
 
 
     @property
-    def external_id(self):
-        """Gets value of {class-name} external_id property.
+    def external_ids(self):
+        """Gets value of {class-name} external_ids property.
 
-        The id of this instance as referenced by an external body (ie: DOI, or even IPSL)"""
-        return list(self.__external_id)
+        A non-CIM (non-GUID) id used to reference the element in question."""
+        return list(self.__external_ids)
 
-    @external_id.setter
-    def external_id(self, value):
-        """Sets value of {class-name} external_id property.
+    @external_ids.setter
+    def external_ids(self, value):
+        """Sets value of {class-name} external_ids property.
 
-        The id of this instance as referenced by an external body (ie: DOI, or even IPSL)"""
+        A non-CIM (non-GUID) id used to reference the element in question."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
-        self.__external_id = []
+        self.__external_ids = []
         for i in value:
-            self.append_to_external_id(i)
+            self.append_to_external_ids(i)
 
-    @external_id.deleter
-    def external_id(self, value):
-        """Deletes {class-name} external_id property."""
-        raise TypeError("Cannot delete {class-name} external_id property.")
+    @external_ids.deleter
+    def external_ids(self, value):
+        """Deletes {class-name} external_ids property."""
+        raise TypeError("Cannot delete {class-name} external_ids property.")
 
-    def append_to_external_id(self, item):
-        """Appends an item to the managed {class-name} external_id collection."""
-        if not isinstance(item, str):
+    def append_to_external_ids(self, item):
+        """Appends an item to the managed {class-name} external_ids collection."""
+        if not isinstance(item, StandardName):
             raise TypeError("item is of incorrect type.")
-        self.__external_id.append(item)
+        self.__external_ids.append(item)
 
-    def remove_from_external_id(self, item):
-        """Removes an item from the managed {class-name} external_id collection."""
-        if not isinstance(item, str):
+    def remove_from_external_ids(self, item):
+        """Removes an item from the managed {class-name} external_ids collection."""
+        if not isinstance(item, StandardName):
             raise TypeError("item is of incorrect type.")
-        self.__external_id.remove(item)
+        self.__external_ids.remove(item)
 
 
     @property
@@ -351,7 +351,7 @@ class CimInfo(object):
         d = dict()
         append(d, 'author', self.__author, False, False, False)
         append(d, 'create_date', self.__create_date, False, True, False)
-        append(d, 'external_id', self.__external_id, True, False, True)
+        append(d, 'external_ids', self.__external_ids, True, False, False)
         append(d, 'genealogy', self.__genealogy, False, False, False)
         append(d, 'id', self.__id, False, True, False)
         append(d, 'metadata_id', self.__metadata_id, False, True, False)

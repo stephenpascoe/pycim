@@ -54,21 +54,61 @@ class TestDecodeSimulationRun(unittest.TestCase):
 
     def test_decode_obj_from_xml(self):
         obj = decode_obj_from_xml(CIM, XML_FILE, TYPE)
+
+        assert obj.cim_info.id == uuid.UUID('309862aa-6dc0-11e1-b0dd-00163e9152a5')
+        assert obj.cim_info.version == '1'
+        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-14 10:27:35.614481')
+        assert obj.cim_info.author.individual_name == 'Metafor Questionnaire'
+        assert len(obj.cim_info.external_ids) == 1
+        assert obj.cim_info.external_ids[0].is_open == True
+        assert obj.cim_info.external_ids[0].value == 'CMCC_CMCC-CM_1.1 decadal1965'
+        assert len(obj.cim_info.external_ids[0].standards) == 1
+        assert obj.cim_info.external_ids[0].standards[0].name == 'QN_DRS'
+        assert obj.cim_info.external_ids[0].standards[0].description.startswith('The QN_DRS value')
         
-        assert obj.cim_info.id == uuid.UUID('b464433a-d3a5-11df-837f-00163e9152a5')
-        assert obj.cim_info.version == '2'
-        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-06 10:06:42.266723')
+        assert obj.long_name == None
+        assert obj.short_name == 'CMCC-CM_decadal2000'
+        assert obj.description.startswith('10-year run initialized in November 2000')
 
-        assert obj.long_name == 'RCP2.6'
-        assert obj.short_name == 'rcp26'
-        assert obj.description.startswith('Future projection (2006-2100) forced by RCP2.6.')
+        assert obj.authors == 'Silvio Gualdi, Alessio Bellucci'
 
+        assert len(obj.deployments) == 1
+        assert obj.deployments[0].description.startswith('The resources(deployment) on which this simulation ran')
+        assert obj.deployments[0].platform == None
+        assert obj.deployments[0].platform_reference is not None
+        assert obj.deployments[0].platform_reference.id == uuid.UUID('d0f22fe6-6dbc-11e1-9bbb-00163e9152a5')
+        assert obj.deployments[0].platform_reference.name == 'calypso'
+        assert obj.deployments[0].platform_reference.type == 'platform'
+        assert obj.deployments[0].platform_reference.version == '1'
+        assert obj.deployments[0].platform_reference.description == 'Reference to a platform called calypso'
+
+        assert isinstance(obj.date_range, ClosedDateRange)
+        assert obj.date_range.duration == 'P10Y'
+        assert obj.date_range.start == dateutil_parser.parse('2000-11-01 00:00:00Z')
+
+        assert obj.model == None
+        assert obj.model_reference is not None
+        assert obj.model_reference.id == uuid.UUID('9a85d330-6c2d-11e1-8021-00163e9152a5')
+        assert obj.model_reference.name == 'CMCC-CM'
+        assert obj.model_reference.type == 'modelComponent'
+        assert obj.model_reference.version == '1'
+        assert obj.model_reference.description == 'Reference to a modelComponent called CMCC-CM'
+
+        assert len(obj.projects) == 1
+        assert obj.projects[0] == 'CMIP5'
+
+        assert len(obj.responsible_parties) == 4
+        rp = obj.responsible_parties[0]
+        assert rp.abbreviation == 'sgualdi'
+        assert rp.contact_info.email == 'silvio.gualdi@cmcc.it'
+        assert rp.individual_name == 'Silvio Gualdi'
+        assert rp.role == 'contact'
 
 
     def test_representation_dict(self):
         d = decode_dict_from_xml(CIM, XML_FILE, TYPE)
         # TODO
-        
+
 
     def test_representation_json(self):
         do_test_from_xml_file(CIM, XML_FILE, 'json')

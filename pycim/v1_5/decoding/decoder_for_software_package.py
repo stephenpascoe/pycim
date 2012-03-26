@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:49.996331.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.704709.
 """
 
 # Module imports.
@@ -31,7 +31,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:49.996331"
+__date__ ="2012-03-26 18:08:48.704709"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -148,6 +148,13 @@ def decode_deployment(xml, nsmap):
 
     """
     decodings = [
+        ('deployment_date', False, 'datetime', 'child::cim:deploymentDate/text()'),
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('executable_arguments', True, 'str', 'child::cim:executableArgument/text()'),
+        ('executable_name', False, 'str', 'child::cim:executableName/text()'),
+        ('parallelisation', False, decode_parallelisation, 'child::cim:parallelisation'),
+        ('platform', False, decode_platform, 'child::cim:platform/cim:platform'),
+        ('platform_reference', False, decode_cim_reference, 'child::cim:platform/cim:reference'),
     ]
 
     return set_attributes(Deployment(), xml, nsmap, decodings)
@@ -201,6 +208,8 @@ def decode_parallelisation(xml, nsmap):
 
     """
     decodings = [
+        ('processes', False, 'int', 'child::cim:processes/text()'),
+        ('ranks', True, decode_rank, 'child::cim:rank'),
     ]
 
     return set_attributes(Parallelisation(), xml, nsmap, decodings)
@@ -239,6 +248,10 @@ def decode_rank(xml, nsmap):
 
     """
     decodings = [
+        ('increment', False, 'int', 'child::cim:rankIncrement'),
+        ('max', False, 'int', 'child::cim:rankMax'),
+        ('min', False, 'int', 'child::cim:rankMin'),
+        ('value', False, 'int', 'child::cim:rankValue'),
     ]
 
     return set_attributes(Rank(), xml, nsmap, decodings)

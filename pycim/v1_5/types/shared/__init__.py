@@ -1,6 +1,6 @@
 """A set of cim 1.5 entities.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.004300.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.713670.
 """
 
 # Module imports.
@@ -25,16 +25,18 @@ from pycim.v1_5.types.shared.platform import Platform
 from pycim.v1_5.types.shared.property import Property
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 from pycim.v1_5.types.shared.responsible_party_contact_info import ResponsiblePartyContactInfo
+from pycim.v1_5.types.shared.standard import Standard
+from pycim.v1_5.types.shared.standard_name import StandardName
 
 
 # Module exports.
-__all__ = ['Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo']
+__all__ = ['Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:50.004300"
+__date__ ="2012-03-26 18:08:48.713670"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

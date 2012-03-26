@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.026253.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.744215.
 """
 
 # Module imports.
@@ -12,6 +12,9 @@ import uuid
 # Intra/Inter-package imports.
 from pycim.v1_5.types.activity.simulation import Simulation
 from pycim.v1_5.types.shared.cim_info import CimInfo
+from pycim.v1_5.types.shared.date_range import DateRange
+from pycim.v1_5.types.software.model_component import ModelComponent
+from pycim.v1_5.types.shared.cim_reference import CimReference
 
 
 
@@ -22,7 +25,7 @@ __all__ = ['SimulationRun']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-20 16:28:50.026253$"
+__date__ ="$2012-03-26 18:08:48.744215$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -41,6 +44,9 @@ class SimulationRun(Simulation):
         super(SimulationRun, self).__init__()
 
         self.__cim_info = None                                      # type = shared.CimInfo
+        self.__date_range = None                                    # type = shared.DateRange
+        self.__model = None                                         # type = software.ModelComponent
+        self.__model_reference = None                               # type = shared.CimReference
 
 
     @property
@@ -63,6 +69,62 @@ class SimulationRun(Simulation):
         raise TypeError("Cannot delete simulation run cim_info property.")
 
 
+    @property
+    def date_range(self):
+        """Gets value of simulation run date_range property."""
+        return self.__date_range
+
+    @date_range.setter
+    def date_range(self, value):
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, DateRange):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of simulation run date_range property."""
+        self.__date_range = value
+
+    @date_range.deleter
+    def date_range(self, value):
+        """Deletes simulation run date_range property."""
+        raise TypeError("Cannot delete simulation run date_range property.")
+
+
+    @property
+    def model(self):
+        """Gets value of {class-name} model property."""
+        return self.__model
+
+    @model.setter
+    def model(self, value):
+        if value is not None and not isinstance(value, ModelComponent):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} model property."""
+        self.__model = value
+
+    @model.deleter
+    def model(self, value):
+        """Deletes {class-name} model property."""
+        raise TypeError("Cannot delete {class-name} model property.")
+
+
+    @property
+    def model_reference(self):
+        """Gets value of {class-name} model_reference property."""
+        return self.__model_reference
+
+    @model_reference.setter
+    def model_reference(self, value):
+        if value is not None and not isinstance(value, CimReference):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} model_reference property."""
+        self.__model_reference = value
+
+    @model_reference.deleter
+    def model_reference(self, value):
+        """Deletes {class-name} model_reference property."""
+        raise TypeError("Cannot delete {class-name} model_reference property.")
+
+
 
     def as_dict(self):
         """Gets dictionary representation of self used to create other representations such as json, xml ...etc.
@@ -82,6 +144,9 @@ class SimulationRun(Simulation):
         # Populate a deep dictionary.
         d = dict(super(SimulationRun, self).as_dict())
         append(d, 'cim_info', self.__cim_info, False, False, False)
+        append(d, 'date_range', self.__date_range, False, False, False)
+        append(d, 'model', self.__model, False, False, False)
+        append(d, 'model_reference', self.__model_reference, False, False, False)
         return d
 
 

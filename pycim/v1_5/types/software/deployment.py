@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.095297.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.812570.
 """
 
 # Module imports.
@@ -10,6 +10,9 @@ import types
 import uuid
 
 # Intra/Inter-package imports.
+from pycim.v1_5.types.software.parallelisation import Parallelisation
+from pycim.v1_5.types.shared.platform import Platform
+from pycim.v1_5.types.shared.cim_reference import CimReference
 
 
 
@@ -20,7 +23,7 @@ __all__ = ['Deployment']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-20 16:28:50.095297$"
+__date__ ="$2012-03-26 18:08:48.812570$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,10 +43,11 @@ class Deployment(object):
 
         self.__deployment_date = datetime.datetime.now()            # type = datetime.datetime
         self.__description = str()                                  # type = str
-        self.__executable_argument = []                             # type = str
+        self.__executable_arguments = []                            # type = str
         self.__executable_name = str()                              # type = str
-        self.__parallelisation = str()                              # type = str
-        self.__platform = str()                                     # type = str
+        self.__parallelisation = None                               # type = software.Parallelisation
+        self.__platform = None                                      # type = shared.Platform
+        self.__platform_reference = None                            # type = shared.CimReference
 
 
     @property
@@ -83,35 +87,35 @@ class Deployment(object):
 
 
     @property
-    def executable_argument(self):
-        """Gets value of {class-name} executable_argument property."""
-        return list(self.__executable_argument)
+    def executable_arguments(self):
+        """Gets value of {class-name} executable_arguments property."""
+        return list(self.__executable_arguments)
 
-    @executable_argument.setter
-    def executable_argument(self, value):
-        """Sets value of {class-name} executable_argument property."""
+    @executable_arguments.setter
+    def executable_arguments(self, value):
+        """Sets value of {class-name} executable_arguments property."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
-        self.__executable_argument = []
+        self.__executable_arguments = []
         for i in value:
-            self.append_to_executable_argument(i)
+            self.append_to_executable_arguments(i)
 
-    @executable_argument.deleter
-    def executable_argument(self, value):
-        """Deletes {class-name} executable_argument property."""
-        raise TypeError("Cannot delete {class-name} executable_argument property.")
+    @executable_arguments.deleter
+    def executable_arguments(self, value):
+        """Deletes {class-name} executable_arguments property."""
+        raise TypeError("Cannot delete {class-name} executable_arguments property.")
 
-    def append_to_executable_argument(self, item):
-        """Appends an item to the managed {class-name} executable_argument collection."""
+    def append_to_executable_arguments(self, item):
+        """Appends an item to the managed {class-name} executable_arguments collection."""
         if not isinstance(item, str):
             raise TypeError("item is of incorrect type.")
-        self.__executable_argument.append(item)
+        self.__executable_arguments.append(item)
 
-    def remove_from_executable_argument(self, item):
-        """Removes an item from the managed {class-name} executable_argument collection."""
+    def remove_from_executable_arguments(self, item):
+        """Removes an item from the managed {class-name} executable_arguments collection."""
         if not isinstance(item, str):
             raise TypeError("item is of incorrect type.")
-        self.__executable_argument.remove(item)
+        self.__executable_arguments.remove(item)
 
 
     @property
@@ -139,7 +143,7 @@ class Deployment(object):
 
     @parallelisation.setter
     def parallelisation(self, value):
-        if value is not None and not isinstance(value, str):
+        if value is not None and not isinstance(value, Parallelisation):
             raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
         """Sets value of {class-name} parallelisation property."""
         self.__parallelisation = value
@@ -159,7 +163,7 @@ class Deployment(object):
 
     @platform.setter
     def platform(self, value):
-        if value is not None and not isinstance(value, str):
+        if value is not None and not isinstance(value, Platform):
             raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
         """Sets value of {class-name} platform property."""
         self.__platform = value
@@ -168,6 +172,24 @@ class Deployment(object):
     def platform(self, value):
         """Deletes {class-name} platform property."""
         raise TypeError("Cannot delete {class-name} platform property.")
+
+
+    @property
+    def platform_reference(self):
+        """Gets value of {class-name} platform_reference property."""
+        return self.__platform_reference
+
+    @platform_reference.setter
+    def platform_reference(self, value):
+        if value is not None and not isinstance(value, CimReference):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} platform_reference property."""
+        self.__platform_reference = value
+
+    @platform_reference.deleter
+    def platform_reference(self, value):
+        """Deletes {class-name} platform_reference property."""
+        raise TypeError("Cannot delete {class-name} platform_reference property.")
 
 
 
@@ -190,10 +212,11 @@ class Deployment(object):
         d = dict()
         append(d, 'deployment_date', self.__deployment_date, False, True, False)
         append(d, 'description', self.__description, False, True, False)
-        append(d, 'executable_argument', self.__executable_argument, True, True, False)
+        append(d, 'executable_arguments', self.__executable_arguments, True, True, False)
         append(d, 'executable_name', self.__executable_name, False, True, False)
-        append(d, 'parallelisation', self.__parallelisation, False, True, False)
-        append(d, 'platform', self.__platform, False, True, False)
+        append(d, 'parallelisation', self.__parallelisation, False, False, False)
+        append(d, 'platform', self.__platform, False, False, False)
+        append(d, 'platform_reference', self.__platform_reference, False, False, False)
         return d
 
 

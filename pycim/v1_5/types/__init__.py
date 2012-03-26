@@ -1,6 +1,6 @@
 """A set of cim 1.5 packages.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.001063.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.709395.
 """
 
 # Module imports.
@@ -18,6 +18,7 @@ from pycim.v1_5.types.activity.numerical_activity import NumericalActivity
 from pycim.v1_5.types.activity.numerical_experiment import NumericalExperiment
 from pycim.v1_5.types.activity.numerical_requirement import NumericalRequirement
 from pycim.v1_5.types.activity.output_requirement import OutputRequirement
+from pycim.v1_5.types.activity.physical_modification import PhysicalModification
 from pycim.v1_5.types.activity.requirement_option import RequirementOption
 from pycim.v1_5.types.activity.simulation import Simulation
 from pycim.v1_5.types.activity.simulation_composite import SimulationComposite
@@ -63,6 +64,8 @@ from pycim.v1_5.types.shared.platform import Platform
 from pycim.v1_5.types.shared.property import Property
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 from pycim.v1_5.types.shared.responsible_party_contact_info import ResponsiblePartyContactInfo
+from pycim.v1_5.types.shared.standard import Standard
+from pycim.v1_5.types.shared.standard_name import StandardName
 from pycim.v1_5.types.software.component_language import ComponentLanguage
 from pycim.v1_5.types.software.component_language_property import ComponentLanguageProperty
 from pycim.v1_5.types.software.component_property import ComponentProperty
@@ -80,13 +83,13 @@ from pycim.v1_5.types.software.timing import Timing
 
 
 # Module exports.
-__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'GridMosaic', 'GridSpec', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Coupling', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'Timing']
+__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'GridMosaic', 'GridSpec', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Coupling', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'Timing']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:50.001063"
+__date__ ="2012-03-26 18:08:48.709395"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

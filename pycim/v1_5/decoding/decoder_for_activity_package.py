@@ -1,11 +1,13 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:49.987265.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.690167.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
+from pycim.v1_5.decoding.decoder_for_data_package import *
 from pycim.v1_5.decoding.decoder_for_shared_package import *
+from pycim.v1_5.decoding.decoder_for_software_package import *
 from pycim.v1_5.types.activity import *
 
 
@@ -25,6 +27,7 @@ __all__ = [
     "decode_numerical_experiment", 
     "decode_numerical_requirement", 
     "decode_output_requirement", 
+    "decode_physical_modification", 
     "decode_requirement_option", 
     "decode_simulation", 
     "decode_simulation_composite", 
@@ -38,7 +41,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:49.987265"
+__date__ ="2012-03-26 18:08:48.690167"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -55,7 +58,10 @@ def decode_activity(xml, nsmap):
 
     """
     decodings = [
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(Activity(), xml, nsmap, decodings)
@@ -88,6 +94,21 @@ def decode_conformance(xml, nsmap):
 
     """
     decodings = [
+        ('description', False, 'str', 'child::cim:description'),
+        ('frequency', False, 'str', 'child::cim:frequency'),
+        ('is_conformant', False, 'bool', 'self::@conformant'),
+        ('requirement_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
+        ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
+        ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
+        ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
+        ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
+        ('source_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
+        ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
+        ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
+        ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
+        ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
+        ('type', False, 'str', 'self::@type'),
     ]
 
     return set_attributes(Conformance(), xml, nsmap, decodings)
@@ -106,7 +127,10 @@ def decode_ensemble(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(Ensemble(), xml, nsmap, decodings)
@@ -124,7 +148,10 @@ def decode_ensemble_member(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(EnsembleMember(), xml, nsmap, decodings)
@@ -139,7 +166,10 @@ def decode_experiment(xml, nsmap):
 
     """
     decodings = [
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(Experiment(), xml, nsmap, decodings)
@@ -200,7 +230,10 @@ def decode_measurement_campaign(xml, nsmap):
 
     """
     decodings = [
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(MeasurementCampaign(), xml, nsmap, decodings)
@@ -218,7 +251,10 @@ def decode_numerical_activity(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(NumericalActivity(), xml, nsmap, decodings)
@@ -242,7 +278,10 @@ def decode_numerical_experiment(xml, nsmap):
         ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:numericalRequirement/cim:spatioTemporalConstraint'),
         ('requirements', True, decode_output_requirement, 'child::cim:numericalRequirement/cim:outputRequirement'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(NumericalExperiment(), xml, nsmap, decodings)
@@ -284,6 +323,35 @@ def decode_output_requirement(xml, nsmap):
     return set_attributes(OutputRequirement(), xml, nsmap, decodings)
 
 
+def decode_physical_modification(xml, nsmap):
+    """Decodes a physical modification instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description'),
+        ('frequency', False, 'str', 'child::cim:frequency'),
+        ('is_conformant', False, 'bool', 'self::@conformant'),
+        ('requirement_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
+        ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
+        ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
+        ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
+        ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
+        ('source_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
+        ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
+        ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
+        ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
+        ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
+        ('type', False, 'str', 'self::@type'),
+    ]
+
+    return set_attributes(PhysicalModification(), xml, nsmap, decodings)
+
+
 def decode_requirement_option(xml, nsmap):
     """Decodes a requirement option instance from xml.
 
@@ -312,10 +380,17 @@ def decode_simulation(xml, nsmap):
 
     """
     decodings = [
+        ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
+        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(Simulation(), xml, nsmap, decodings)
@@ -330,11 +405,23 @@ def decode_simulation_composite(xml, nsmap):
 
     """
     decodings = [
-        ('cim_info', False, decode_cim_info, 'self::cim:simulationComposite'),
+        ('child', True, decode_simulation_run, 'child::cim:child'),
+        ('child', True, decode_simulation_composite, 'child::cim:child'),
+        ('cim_info', False, decode_cim_info, 'self::cim:simulationRun'),
+        ('date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
+        ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
+        ('rank', False, 'int', 'child::cim:rank/text()'),
+        ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
+        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(SimulationComposite(), xml, nsmap, decodings)
@@ -378,10 +465,21 @@ def decode_simulation_run(xml, nsmap):
     """
     decodings = [
         ('cim_info', False, decode_cim_info, 'self::cim:simulationRun'),
+        ('date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
+        ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
+        ('model', False, decode_model_component, 'child::cim:model/cim:modelComponent'),
+        ('model_reference', False, decode_cim_reference, 'child::cim:model/cim:reference'),
+        ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
+        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
+        ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
+        ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
     return set_attributes(SimulationRun(), xml, nsmap, decodings)

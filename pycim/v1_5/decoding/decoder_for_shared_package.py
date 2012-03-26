@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:49.993741.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.699844.
 """
 
 # Module imports.
@@ -30,14 +30,16 @@ __all__ = [
     "decode_platform", 
     "decode_property", 
     "decode_responsible_party", 
-    "decode_responsible_party_contact_info"
+    "decode_responsible_party_contact_info", 
+    "decode_standard", 
+    "decode_standard_name"
 ]
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:49.993741"
+__date__ ="2012-03-26 18:08:48.699844"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -118,6 +120,7 @@ def decode_cim_info(xml, nsmap):
     decodings = [
         ('author', False, decode_responsible_party, 'child::cim:documentAuthor'),
         ('create_date', False, 'datetime', 'child::cim:documentCreationDate/text()'),
+        ('external_ids', True, decode_standard_name, 'child::cim:externalID'),
         ('genealogy', False, decode_cim_genealogy, 'child::cim:documentGenealogy'),
         ('id', False, 'uuid', 'child::cim:documentID/text()'),
         ('version', False, 'str', 'child::cim:documentVersion/text()'),
@@ -382,5 +385,39 @@ def decode_responsible_party_contact_info(xml, nsmap):
     ]
 
     return set_attributes(ResponsiblePartyContactInfo(), xml, nsmap, decodings)
+
+
+def decode_standard(xml, nsmap):
+    """Decodes a standard instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('name', False, 'str', 'child::cim:name/text()'),
+        ('version', False, 'str', 'child::cim:version/text()'),
+    ]
+
+    return set_attributes(Standard(), xml, nsmap, decodings)
+
+
+def decode_standard_name(xml, nsmap):
+    """Decodes a standard name instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('is_open', False, 'bool', '@open'),
+        ('standards', True, decode_standard, 'child::cim:standard'),
+        ('value', False, 'str', '@value'),
+    ]
+
+    return set_attributes(StandardName(), xml, nsmap, decodings)
 
 

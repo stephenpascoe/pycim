@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.008574.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.718479.
 """
 
 # Module imports.
@@ -10,6 +10,12 @@ import types
 import uuid
 
 # Intra/Inter-package imports.
+from pycim.v1_5.types.activity.frequency_type import FrequencyType
+from pycim.v1_5.types.shared.cim_reference import CimReference
+from pycim.v1_5.types.activity.numerical_requirement import NumericalRequirement
+from pycim.v1_5.types.shared.cim_reference import CimReference
+from pycim.v1_5.types.shared.data_source import DataSource
+from pycim.v1_5.types.activity.conformance_type import ConformanceType
 
 
 
@@ -20,7 +26,7 @@ __all__ = ['Conformance']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-20 16:28:50.008574$"
+__date__ ="$2012-03-26 18:08:48.718479$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -38,7 +44,229 @@ class Conformance(object):
         """Constructor"""
         super(Conformance, self).__init__()
 
-        pass
+        self.__description = str()                                  # type = str
+        self.__frequency = None                                     # type = activity.FrequencyType
+        self.__is_conformant = bool()                               # type = bool
+        self.__requirement_references = []                          # type = shared.CimReference
+        self.__requirements = []                                    # type = activity.NumericalRequirement
+        self.__source_references = []                               # type = shared.CimReference
+        self.__sources = []                                         # type = shared.DataSource
+        self.__type = None                                          # type = activity.ConformanceType
+
+
+    @property
+    def description(self):
+        """Gets value of {class-name} description property."""
+        return self.__description
+
+    @description.setter
+    def description(self, value):
+        if value is not None and not isinstance(value, str):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} description property."""
+        self.__description = value
+
+    @description.deleter
+    def description(self, value):
+        """Deletes {class-name} description property."""
+        raise TypeError("Cannot delete {class-name} description property.")
+
+
+    @property
+    def frequency(self):
+        """Gets value of {class-name} frequency property."""
+        return self.__frequency
+
+    @frequency.setter
+    def frequency(self, value):
+        if value is not None and not isinstance(value, str):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} frequency property."""
+        self.__frequency = value
+
+    @frequency.deleter
+    def frequency(self, value):
+        """Deletes {class-name} frequency property."""
+        raise TypeError("Cannot delete {class-name} frequency property.")
+
+
+    @property
+    def is_conformant(self):
+        """Gets value of conformance is_conformant property.
+
+        Records whether or not this conformance satisfies the requirement.  A simulation should have at least one conformance mapping to every experimental requirement.  If a simulation satisfies the requirement - the usual case - then conformant should have a value of true.  If conformant is true but there is no reference to a source for the conformance, then we can assume that the simulation conforms to the requirement _naturally_, that is without having to modify code or inputs. If a simulation does not conform to a requirement then conformant should be set to false."""
+        return self.__is_conformant
+
+    @is_conformant.setter
+    def is_conformant(self, value):
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, bool):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of conformance is_conformant property."""
+        self.__is_conformant = value
+
+    @is_conformant.deleter
+    def is_conformant(self, value):
+        """Deletes conformance is_conformant property."""
+        raise TypeError("Cannot delete conformance is_conformant property.")
+
+
+    @property
+    def requirement_references(self):
+        """Gets value of {class-name} requirement_references property."""
+        return list(self.__requirement_references)
+
+    @requirement_references.setter
+    def requirement_references(self, value):
+        """Sets value of {class-name} requirement_references property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__requirement_references = []
+        for i in value:
+            self.append_to_requirement_references(i)
+
+    @requirement_references.deleter
+    def requirement_references(self, value):
+        """Deletes {class-name} requirement_references property."""
+        raise TypeError("Cannot delete {class-name} requirement_references property.")
+
+    def append_to_requirement_references(self, item):
+        """Appends an item to the managed {class-name} requirement_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__requirement_references.append(item)
+
+    def remove_from_requirement_references(self, item):
+        """Removes an item from the managed {class-name} requirement_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__requirement_references.remove(item)
+
+
+    @property
+    def requirements(self):
+        """Gets value of {class-name} requirements property.
+
+        Points to the NumericalRequirement that the simulation in question is conforming to."""
+        return list(self.__requirements)
+
+    @requirements.setter
+    def requirements(self, value):
+        """Sets value of {class-name} requirements property.
+
+        Points to the NumericalRequirement that the simulation in question is conforming to."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__requirements = []
+        for i in value:
+            self.append_to_requirements(i)
+
+    @requirements.deleter
+    def requirements(self, value):
+        """Deletes {class-name} requirements property."""
+        raise TypeError("Cannot delete {class-name} requirements property.")
+
+    def append_to_requirements(self, item):
+        """Appends an item to the managed {class-name} requirements collection."""
+        if not isinstance(item, NumericalRequirement):
+            raise TypeError("item is of incorrect type.")
+        self.__requirements.append(item)
+
+    def remove_from_requirements(self, item):
+        """Removes an item from the managed {class-name} requirements collection."""
+        if not isinstance(item, NumericalRequirement):
+            raise TypeError("item is of incorrect type.")
+        self.__requirements.remove(item)
+
+
+    @property
+    def source_references(self):
+        """Gets value of {class-name} source_references property."""
+        return list(self.__source_references)
+
+    @source_references.setter
+    def source_references(self, value):
+        """Sets value of {class-name} source_references property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__source_references = []
+        for i in value:
+            self.append_to_source_references(i)
+
+    @source_references.deleter
+    def source_references(self, value):
+        """Deletes {class-name} source_references property."""
+        raise TypeError("Cannot delete {class-name} source_references property.")
+
+    def append_to_source_references(self, item):
+        """Appends an item to the managed {class-name} source_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__source_references.append(item)
+
+    def remove_from_source_references(self, item):
+        """Removes an item from the managed {class-name} source_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__source_references.remove(item)
+
+
+    @property
+    def sources(self):
+        """Gets value of {class-name} sources property.
+
+        Points to the DataSource used to conform to a particular Requirement.   This may be part of an activity::simulation or a software::component.  It can be either a DataObject or a SoftwareComponent or a ComponentProperty.  It could also be by using particular attributes of, say, a SoftwareComponent, but in that case the recommended practise is to reference the component and add appropriate text in the conformance description attribute."""
+        return list(self.__sources)
+
+    @sources.setter
+    def sources(self, value):
+        """Sets value of {class-name} sources property.
+
+        Points to the DataSource used to conform to a particular Requirement.   This may be part of an activity::simulation or a software::component.  It can be either a DataObject or a SoftwareComponent or a ComponentProperty.  It could also be by using particular attributes of, say, a SoftwareComponent, but in that case the recommended practise is to reference the component and add appropriate text in the conformance description attribute."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__sources = []
+        for i in value:
+            self.append_to_sources(i)
+
+    @sources.deleter
+    def sources(self, value):
+        """Deletes {class-name} sources property."""
+        raise TypeError("Cannot delete {class-name} sources property.")
+
+    def append_to_sources(self, item):
+        """Appends an item to the managed {class-name} sources collection."""
+        if not isinstance(item, DataSource):
+            raise TypeError("item is of incorrect type.")
+        self.__sources.append(item)
+
+    def remove_from_sources(self, item):
+        """Removes an item from the managed {class-name} sources collection."""
+        if not isinstance(item, DataSource):
+            raise TypeError("item is of incorrect type.")
+        self.__sources.remove(item)
+
+
+    @property
+    def type(self):
+        """Gets value of {class-name} type property.
+
+        Describes the method that this simulation conforms to an experimental requirement (in case it is not specified by the change property of the reference to the source of this conformance)"""
+        return self.__type
+
+    @type.setter
+    def type(self, value):
+        if value is not None and not isinstance(value, str):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} type property."""
+        self.__type = value
+
+    @type.deleter
+    def type(self, value):
+        """Deletes {class-name} type property."""
+        raise TypeError("Cannot delete {class-name} type property.")
+
 
 
     def as_dict(self):
@@ -58,6 +286,14 @@ class Conformance(object):
 
         # Populate a deep dictionary.
         d = dict()
+        append(d, 'description', self.__description, False, True, False)
+        append(d, 'frequency', self.__frequency, False, False, True)
+        append(d, 'is_conformant', self.__is_conformant, False, True, False)
+        append(d, 'requirement_references', self.__requirement_references, True, False, False)
+        append(d, 'requirements', self.__requirements, True, False, False)
+        append(d, 'source_references', self.__source_references, True, False, False)
+        append(d, 'sources', self.__sources, True, False, False)
+        append(d, 'type', self.__type, False, False, True)
         return d
 
 

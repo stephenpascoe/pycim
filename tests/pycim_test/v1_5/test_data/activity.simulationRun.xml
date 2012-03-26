@@ -1,5 +1,15 @@
 
-<simulationRun>
+<simulationRun 
+    xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas"
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:oai="http://www.openarchives.org/OAI/2.0/"
+    xmlns:xref="http://www.oracle.com/XSL/Transform/java/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:geonet="http://www.fao.org/geonetwork"
+    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <responsibleParty>
       <!--responsibleParty uri :: 95dcb4f6-6c33-11e1-a2b5-00163e9152a5-->
         <gmd:individualName>

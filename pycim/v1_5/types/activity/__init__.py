@@ -1,6 +1,6 @@
 """A set of cim 1.5 entities.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-20 16:28:50.002194.
+CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.711221.
 """
 
 # Module imports.
@@ -18,6 +18,7 @@ from pycim.v1_5.types.activity.numerical_activity import NumericalActivity
 from pycim.v1_5.types.activity.numerical_experiment import NumericalExperiment
 from pycim.v1_5.types.activity.numerical_requirement import NumericalRequirement
 from pycim.v1_5.types.activity.output_requirement import OutputRequirement
+from pycim.v1_5.types.activity.physical_modification import PhysicalModification
 from pycim.v1_5.types.activity.requirement_option import RequirementOption
 from pycim.v1_5.types.activity.simulation import Simulation
 from pycim.v1_5.types.activity.simulation_composite import SimulationComposite
@@ -28,13 +29,13 @@ from pycim.v1_5.types.activity.spatio_temporal_constraint import SpatioTemporalC
 
 
 # Module exports.
-__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint']
+__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-20 16:28:50.002194"
+__date__ ="2012-03-26 18:08:48.711221"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
