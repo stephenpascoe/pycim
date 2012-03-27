@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.727933.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.985591.
 """
 
 # Module imports.
@@ -14,6 +14,7 @@ import uuid
 
 # Intra/Inter-package imports.
 from pycim.v1_5.types.activity.activity import Activity
+from pycim.v1_5.types.shared.cim_reference import CimReference
 
 
 
@@ -24,7 +25,7 @@ __all__ = ['NumericalActivity']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-26 18:08:48.727933$"
+__date__ ="$2012-03-27 17:29:36.985591$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -48,6 +49,8 @@ class NumericalActivity(Activity):
         self.__description = str()                                  # type = str
         self.__long_name = str()                                    # type = str
         self.__short_name = str()                                   # type = str
+        self.__supports = []                                        # type = activity.Experiment
+        self.__supports_references = []                             # type = shared.CimReference
 
 
     @property
@@ -112,6 +115,70 @@ class NumericalActivity(Activity):
         raise TypeError("Cannot delete numerical activity short_name property.")
 
 
+    @property
+    def supports(self):
+        """Gets value of {class-name} supports property."""
+        return list(self.__supports)
+
+    @supports.setter
+    def supports(self, value):
+        """Sets value of {class-name} supports property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__supports = []
+        for i in value:
+            self.append_to_supports(i)
+
+    @supports.deleter
+    def supports(self, value):
+        """Deletes {class-name} supports property."""
+        raise TypeError("Cannot delete {class-name} supports property.")
+
+    def append_to_supports(self, item):
+        """Appends an item to the managed {class-name} supports collection."""
+        if not isinstance(item, Experiment):
+            raise TypeError("item is of incorrect type.")
+        self.__supports.append(item)
+
+    def remove_from_supports(self, item):
+        """Removes an item from the managed {class-name} supports collection."""
+        if not isinstance(item, Experiment):
+            raise TypeError("item is of incorrect type.")
+        self.__supports.remove(item)
+
+
+    @property
+    def supports_references(self):
+        """Gets value of {class-name} supports_references property."""
+        return list(self.__supports_references)
+
+    @supports_references.setter
+    def supports_references(self, value):
+        """Sets value of {class-name} supports_references property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__supports_references = []
+        for i in value:
+            self.append_to_supports_references(i)
+
+    @supports_references.deleter
+    def supports_references(self, value):
+        """Deletes {class-name} supports_references property."""
+        raise TypeError("Cannot delete {class-name} supports_references property.")
+
+    def append_to_supports_references(self, item):
+        """Appends an item to the managed {class-name} supports_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__supports_references.append(item)
+
+    def remove_from_supports_references(self, item):
+        """Removes an item from the managed {class-name} supports_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__supports_references.remove(item)
+
+
 
     def as_dict(self):
         """Gets dictionary representation of self used to create other representations such as json, xml ...etc.
@@ -133,6 +200,8 @@ class NumericalActivity(Activity):
         append(d, 'description', self.__description, False, True, False)
         append(d, 'long_name', self.__long_name, False, True, False)
         append(d, 'short_name', self.__short_name, False, True, False)
+        append(d, 'supports', self.__supports, True, False, False)
+        append(d, 'supports_references', self.__supports_references, True, False, False)
         return d
 
 
@@ -142,5 +211,6 @@ class NumericalActivity(Activity):
 
 # Circular reference imports.
 # N.B. - see http://effbot.org/zone/import-confusion.htm.
+from pycim.v1_5.types.activity.experiment import Experiment
 
 

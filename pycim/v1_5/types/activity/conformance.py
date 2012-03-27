@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.718479.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.976174.
 """
 
 # Module imports.
@@ -11,10 +11,10 @@ import uuid
 
 # Intra/Inter-package imports.
 from pycim.v1_5.types.activity.frequency_type import FrequencyType
-from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.activity.numerical_requirement import NumericalRequirement
 from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.shared.data_source import DataSource
+from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.activity.conformance_type import ConformanceType
 
 
@@ -26,7 +26,7 @@ __all__ = ['Conformance']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-26 18:08:48.718479$"
+__date__ ="$2012-03-27 17:29:36.976174$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -47,10 +47,10 @@ class Conformance(object):
         self.__description = str()                                  # type = str
         self.__frequency = None                                     # type = activity.FrequencyType
         self.__is_conformant = bool()                               # type = bool
-        self.__requirement_references = []                          # type = shared.CimReference
         self.__requirements = []                                    # type = activity.NumericalRequirement
-        self.__source_references = []                               # type = shared.CimReference
+        self.__requirements_references = []                         # type = shared.CimReference
         self.__sources = []                                         # type = shared.DataSource
+        self.__sources_references = []                              # type = shared.CimReference
         self.__type = None                                          # type = activity.ConformanceType
 
 
@@ -113,38 +113,6 @@ class Conformance(object):
 
 
     @property
-    def requirement_references(self):
-        """Gets value of {class-name} requirement_references property."""
-        return list(self.__requirement_references)
-
-    @requirement_references.setter
-    def requirement_references(self, value):
-        """Sets value of {class-name} requirement_references property."""
-        if not isinstance(value, types.ListType):
-            raise TypeError("value must be an iterable type.")
-        self.__requirement_references = []
-        for i in value:
-            self.append_to_requirement_references(i)
-
-    @requirement_references.deleter
-    def requirement_references(self, value):
-        """Deletes {class-name} requirement_references property."""
-        raise TypeError("Cannot delete {class-name} requirement_references property.")
-
-    def append_to_requirement_references(self, item):
-        """Appends an item to the managed {class-name} requirement_references collection."""
-        if not isinstance(item, CimReference):
-            raise TypeError("item is of incorrect type.")
-        self.__requirement_references.append(item)
-
-    def remove_from_requirement_references(self, item):
-        """Removes an item from the managed {class-name} requirement_references collection."""
-        if not isinstance(item, CimReference):
-            raise TypeError("item is of incorrect type.")
-        self.__requirement_references.remove(item)
-
-
-    @property
     def requirements(self):
         """Gets value of {class-name} requirements property.
 
@@ -181,35 +149,35 @@ class Conformance(object):
 
 
     @property
-    def source_references(self):
-        """Gets value of {class-name} source_references property."""
-        return list(self.__source_references)
+    def requirements_references(self):
+        """Gets value of {class-name} requirements_references property."""
+        return list(self.__requirements_references)
 
-    @source_references.setter
-    def source_references(self, value):
-        """Sets value of {class-name} source_references property."""
+    @requirements_references.setter
+    def requirements_references(self, value):
+        """Sets value of {class-name} requirements_references property."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
-        self.__source_references = []
+        self.__requirements_references = []
         for i in value:
-            self.append_to_source_references(i)
+            self.append_to_requirements_references(i)
 
-    @source_references.deleter
-    def source_references(self, value):
-        """Deletes {class-name} source_references property."""
-        raise TypeError("Cannot delete {class-name} source_references property.")
+    @requirements_references.deleter
+    def requirements_references(self, value):
+        """Deletes {class-name} requirements_references property."""
+        raise TypeError("Cannot delete {class-name} requirements_references property.")
 
-    def append_to_source_references(self, item):
-        """Appends an item to the managed {class-name} source_references collection."""
+    def append_to_requirements_references(self, item):
+        """Appends an item to the managed {class-name} requirements_references collection."""
         if not isinstance(item, CimReference):
             raise TypeError("item is of incorrect type.")
-        self.__source_references.append(item)
+        self.__requirements_references.append(item)
 
-    def remove_from_source_references(self, item):
-        """Removes an item from the managed {class-name} source_references collection."""
+    def remove_from_requirements_references(self, item):
+        """Removes an item from the managed {class-name} requirements_references collection."""
         if not isinstance(item, CimReference):
             raise TypeError("item is of incorrect type.")
-        self.__source_references.remove(item)
+        self.__requirements_references.remove(item)
 
 
     @property
@@ -246,6 +214,38 @@ class Conformance(object):
         if not isinstance(item, DataSource):
             raise TypeError("item is of incorrect type.")
         self.__sources.remove(item)
+
+
+    @property
+    def sources_references(self):
+        """Gets value of {class-name} sources_references property."""
+        return list(self.__sources_references)
+
+    @sources_references.setter
+    def sources_references(self, value):
+        """Sets value of {class-name} sources_references property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__sources_references = []
+        for i in value:
+            self.append_to_sources_references(i)
+
+    @sources_references.deleter
+    def sources_references(self, value):
+        """Deletes {class-name} sources_references property."""
+        raise TypeError("Cannot delete {class-name} sources_references property.")
+
+    def append_to_sources_references(self, item):
+        """Appends an item to the managed {class-name} sources_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__sources_references.append(item)
+
+    def remove_from_sources_references(self, item):
+        """Removes an item from the managed {class-name} sources_references collection."""
+        if not isinstance(item, CimReference):
+            raise TypeError("item is of incorrect type.")
+        self.__sources_references.remove(item)
 
 
     @property
@@ -289,10 +289,10 @@ class Conformance(object):
         append(d, 'description', self.__description, False, True, False)
         append(d, 'frequency', self.__frequency, False, False, True)
         append(d, 'is_conformant', self.__is_conformant, False, True, False)
-        append(d, 'requirement_references', self.__requirement_references, True, False, False)
         append(d, 'requirements', self.__requirements, True, False, False)
-        append(d, 'source_references', self.__source_references, True, False, False)
+        append(d, 'requirements_references', self.__requirements_references, True, False, False)
         append(d, 'sources', self.__sources, True, False, False)
+        append(d, 'sources_references', self.__sources_references, True, False, False)
         append(d, 'type', self.__type, False, False, True)
         return d
 

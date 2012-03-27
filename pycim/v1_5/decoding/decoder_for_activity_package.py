@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.690167.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.948270.
 """
 
 # Module imports.
@@ -41,7 +41,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-26 18:08:48.690167"
+__date__ ="2012-03-27 17:29:36.948270"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -94,21 +94,21 @@ def decode_conformance(xml, nsmap):
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'str', 'child::cim:description/text()'),
         ('frequency', False, 'str', 'child::cim:frequency'),
-        ('is_conformant', False, 'bool', 'self::@conformant'),
-        ('requirement_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
+        ('is_conformant', False, 'bool', '@conformant'),
         ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
         ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
         ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
         ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
-        ('source_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('requirements_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
         ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
         ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
         ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
         ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('type', False, 'str', 'self::@type'),
+        ('sources_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('type', False, 'str', '@type'),
     ]
 
     return set_attributes(Conformance(), xml, nsmap, decodings)
@@ -127,6 +127,8 @@ def decode_ensemble(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
@@ -148,6 +150,8 @@ def decode_ensemble_member(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
@@ -251,6 +255,8 @@ def decode_numerical_activity(xml, nsmap):
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
@@ -332,21 +338,21 @@ def decode_physical_modification(xml, nsmap):
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'str', 'child::cim:description/text()'),
         ('frequency', False, 'str', 'child::cim:frequency'),
-        ('is_conformant', False, 'bool', 'self::@conformant'),
-        ('requirement_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
+        ('is_conformant', False, 'bool', '@conformant'),
         ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
         ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
         ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
         ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
-        ('source_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('requirements_references', True, decode_cim_reference, 'child::cim:requirement/cim:reference'),
         ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
         ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
         ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
         ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('type', False, 'str', 'self::@type'),
+        ('sources_references', True, decode_cim_reference, 'child::cim:source/cim:reference'),
+        ('type', False, 'str', '@type'),
     ]
 
     return set_attributes(PhysicalModification(), xml, nsmap, decodings)
@@ -381,12 +387,21 @@ def decode_simulation(xml, nsmap):
     """
     decodings = [
         ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
-        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('calendar', False, decode_daily_360, 'child::cim:calendar/cim:daily-360'),
+        ('calendar', False, decode_perpetual_period, 'child::cim:calendar/cim:perpetualPeriod'),
+        ('calendar', False, decode_real_calendar, 'child::cim:calendar/cim:realCalendar'),
+        ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
+        ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
+        ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
+        ('control_simulation_reference', False, decode_cim_reference, 'child::cim:controlSimulation/cim:reference'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('inputs', True, decode_coupling, 'child::cim:input'),
         ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
@@ -412,12 +427,21 @@ def decode_simulation_composite(xml, nsmap):
         ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
         ('rank', False, 'int', 'child::cim:rank/text()'),
         ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
-        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('calendar', False, decode_daily_360, 'child::cim:calendar/cim:daily-360'),
+        ('calendar', False, decode_perpetual_period, 'child::cim:calendar/cim:perpetualPeriod'),
+        ('calendar', False, decode_real_calendar, 'child::cim:calendar/cim:realCalendar'),
+        ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
+        ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
+        ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
+        ('control_simulation_reference', False, decode_cim_reference, 'child::cim:controlSimulation/cim:reference'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('inputs', True, decode_coupling, 'child::cim:input'),
         ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),
@@ -470,12 +494,21 @@ def decode_simulation_run(xml, nsmap):
         ('model', False, decode_model_component, 'child::cim:model/cim:modelComponent'),
         ('model_reference', False, decode_cim_reference, 'child::cim:model/cim:reference'),
         ('authors', False, 'str', 'child::cim:authorsList/cim:list/text()'),
-        ('conformances', True, decode_conformance, 'child::cim:authorsList/cim:list/text()'),
+        ('calendar', False, decode_daily_360, 'child::cim:calendar/cim:daily-360'),
+        ('calendar', False, decode_perpetual_period, 'child::cim:calendar/cim:perpetualPeriod'),
+        ('calendar', False, decode_real_calendar, 'child::cim:calendar/cim:realCalendar'),
+        ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
+        ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
+        ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
+        ('control_simulation_reference', False, decode_cim_reference, 'child::cim:controlSimulation/cim:reference'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
+        ('inputs', True, decode_coupling, 'child::cim:input'),
         ('simulation_id', False, 'str', 'child::cim:simulationID/text()'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
+        ('supports_references', True, decode_cim_reference, 'child::cim:supports/cim:reference'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource/text()'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale/text()'),

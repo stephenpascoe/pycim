@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.722717.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.979774.
 """
 
 # Module imports.
@@ -15,7 +15,6 @@ import uuid
 # Intra/Inter-package imports.
 from pycim.v1_5.types.activity.activity import Activity
 from pycim.v1_5.types.activity.measurement_campaign import MeasurementCampaign
-from pycim.v1_5.types.activity.numerical_activity import NumericalActivity
 from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.shared.cim_reference import CimReference
 
@@ -28,7 +27,7 @@ __all__ = ['Experiment']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-26 18:08:48.722717$"
+__date__ ="$2012-03-27 17:29:36.979774$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -282,5 +281,6 @@ class Experiment(Activity):
 
 # Circular reference imports.
 # N.B. - see http://effbot.org/zone/import-confusion.htm.
+from pycim.v1_5.types.activity.numerical_activity import NumericalActivity
 
 

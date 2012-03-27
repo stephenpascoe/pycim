@@ -1,6 +1,6 @@
 """An abstract class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.737490.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.995103.
 """
 
 # Module imports.
@@ -14,9 +14,11 @@ import uuid
 
 # Intra/Inter-package imports.
 from pycim.v1_5.types.activity.numerical_activity import NumericalActivity
+from pycim.v1_5.types.shared.calendar import Calendar
 from pycim.v1_5.types.activity.conformance import Conformance
 from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.software.deployment import Deployment
+from pycim.v1_5.types.software.coupling import Coupling
 from pycim.v1_5.types.shared.cim_reference import CimReference
 from pycim.v1_5.types.data.data_object import DataObject
 from pycim.v1_5.types.shared.cim_reference import CimReference
@@ -33,7 +35,7 @@ __all__ = ['Simulation']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-26 18:08:48.737490$"
+__date__ ="$2012-03-27 17:29:36.995103$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -55,12 +57,12 @@ class Simulation(NumericalActivity):
         super(Simulation, self).__init__()
 
         self.__authors = str()                                      # type = str
-        self.__calendar = str()                                     # type = str
+        self.__calendar = None                                      # type = shared.Calendar
         self.__conformances = []                                    # type = activity.Conformance
         self.__control_simulation = None                            # type = activity.Simulation
         self.__control_simulation_reference = None                  # type = shared.CimReference
         self.__deployments = []                                     # type = software.Deployment
-        self.__inputs = []                                          # type = str
+        self.__inputs = []                                          # type = software.Coupling
         self.__output_references = []                               # type = shared.CimReference
         self.__outputs = []                                         # type = data.DataObject
         self.__restart_references = []                              # type = shared.CimReference
@@ -100,7 +102,7 @@ class Simulation(NumericalActivity):
     def calendar(self, value):
         if value is None:
             raise TypeError("Value cannot be null.")
-        elif not isinstance(value, str):
+        elif not isinstance(value, Calendar):
             raise TypeError("Invalid value type : VALUE = {0}.".format(value))
         """Sets value of simulation calendar property."""
         self.__calendar = value
@@ -238,13 +240,13 @@ class Simulation(NumericalActivity):
 
     def append_to_inputs(self, item):
         """Appends an item to the managed {class-name} inputs collection."""
-        if not isinstance(item, str):
+        if not isinstance(item, Coupling):
             raise TypeError("item is of incorrect type.")
         self.__inputs.append(item)
 
     def remove_from_inputs(self, item):
         """Removes an item from the managed {class-name} inputs collection."""
-        if not isinstance(item, str):
+        if not isinstance(item, Coupling):
             raise TypeError("item is of incorrect type.")
         self.__inputs.remove(item)
 
@@ -472,12 +474,12 @@ class Simulation(NumericalActivity):
         # Populate a deep dictionary.
         d = dict(super(Simulation, self).as_dict())
         append(d, 'authors', self.__authors, False, True, False)
-        append(d, 'calendar', self.__calendar, False, True, False)
+        append(d, 'calendar', self.__calendar, False, False, False)
         append(d, 'conformances', self.__conformances, True, False, False)
         append(d, 'control_simulation', self.__control_simulation, False, False, False)
         append(d, 'control_simulation_reference', self.__control_simulation_reference, False, False, False)
         append(d, 'deployments', self.__deployments, True, False, False)
-        append(d, 'inputs', self.__inputs, True, True, False)
+        append(d, 'inputs', self.__inputs, True, False, False)
         append(d, 'output_references', self.__output_references, True, False, False)
         append(d, 'outputs', self.__outputs, True, False, False)
         append(d, 'restart_references', self.__restart_references, True, False, False)

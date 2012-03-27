@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.822955.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.113890.
 """
 
 # Module imports.
@@ -21,7 +21,7 @@ __all__ = ['Timing']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-26 18:08:48.822955$"
+__date__ ="$2012-03-27 17:29:37.113890$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,10 +40,10 @@ class Timing(object):
         super(Timing, self).__init__()
 
         self.__end = datetime.datetime.now()                        # type = datetime.datetime
+        self.__is_variable_rate = bool()                            # type = bool
         self.__rate = int()                                         # type = int
         self.__start = datetime.datetime.now()                      # type = datetime.datetime
         self.__units = None                                         # type = software.TimingUnits
-        self.__variable_rate = bool()                               # type = bool
 
 
     @property
@@ -62,6 +62,26 @@ class Timing(object):
     def end(self, value):
         """Deletes {class-name} end property."""
         raise TypeError("Cannot delete {class-name} end property.")
+
+
+    @property
+    def is_variable_rate(self):
+        """Gets value of {class-name} is_variable_rate property.
+
+        Describes whether or not the model supports a variable timestep. If set to true, then rate should not be specified."""
+        return self.__is_variable_rate
+
+    @is_variable_rate.setter
+    def is_variable_rate(self, value):
+        if value is not None and not isinstance(value, bool):
+            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
+        """Sets value of {class-name} is_variable_rate property."""
+        self.__is_variable_rate = value
+
+    @is_variable_rate.deleter
+    def is_variable_rate(self, value):
+        """Deletes {class-name} is_variable_rate property."""
+        raise TypeError("Cannot delete {class-name} is_variable_rate property.")
 
 
     @property
@@ -118,26 +138,6 @@ class Timing(object):
         raise TypeError("Cannot delete {class-name} units property.")
 
 
-    @property
-    def variable_rate(self):
-        """Gets value of {class-name} variable_rate property.
-
-        Describes whether or not the model supports a variable timestep. If set to true, then rate should not be specified."""
-        return self.__variable_rate
-
-    @variable_rate.setter
-    def variable_rate(self, value):
-        if value is not None and not isinstance(value, bool):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} variable_rate property."""
-        self.__variable_rate = value
-
-    @variable_rate.deleter
-    def variable_rate(self, value):
-        """Deletes {class-name} variable_rate property."""
-        raise TypeError("Cannot delete {class-name} variable_rate property.")
-
-
 
     def as_dict(self):
         """Gets dictionary representation of self used to create other representations such as json, xml ...etc.
@@ -157,10 +157,10 @@ class Timing(object):
         # Populate a deep dictionary.
         d = dict()
         append(d, 'end', self.__end, False, True, False)
+        append(d, 'is_variable_rate', self.__is_variable_rate, False, True, False)
         append(d, 'rate', self.__rate, False, True, False)
         append(d, 'start', self.__start, False, True, False)
         append(d, 'units', self.__units, False, False, True)
-        append(d, 'variable_rate', self.__variable_rate, False, True, False)
         return d
 
 

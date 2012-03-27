@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.699844.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.957989.
 """
 
 # Module imports.
@@ -21,14 +21,17 @@ __all__ = [
     "decode_citation", 
     "decode_closed_date_range", 
     "decode_compiler", 
+    "decode_daily_360", 
     "decode_data_source", 
     "decode_date_range", 
     "decode_license", 
     "decode_machine", 
     "decode_machine_compiler_unit", 
     "decode_open_date_range", 
+    "decode_perpetual_period", 
     "decode_platform", 
     "decode_property", 
+    "decode_real_calendar", 
     "decode_responsible_party", 
     "decode_responsible_party_contact_info", 
     "decode_standard", 
@@ -39,7 +42,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-26 18:08:48.699844"
+__date__ ="2012-03-27 17:29:36.957989"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -56,6 +59,10 @@ def decode_calendar(xml, nsmap):
 
     """
     decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('length', False, 'int', 'child::cim:length/text()'),
+        ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
+        ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
     ]
 
     return set_attributes(Calendar(), xml, nsmap, decodings)
@@ -229,6 +236,24 @@ def decode_compiler(xml, nsmap):
     return set_attributes(Compiler(), xml, nsmap, decodings)
 
 
+def decode_daily_360(xml, nsmap):
+    """Decodes a daily 360 instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('length', False, 'int', 'child::cim:length/text()'),
+        ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
+        ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
+    ]
+
+    return set_attributes(Daily360(), xml, nsmap, decodings)
+
+
 def decode_data_source(xml, nsmap):
     """Decodes a data source instance from xml.
 
@@ -317,6 +342,24 @@ def decode_open_date_range(xml, nsmap):
     return set_attributes(OpenDateRange(), xml, nsmap, decodings)
 
 
+def decode_perpetual_period(xml, nsmap):
+    """Decodes a perpetual period instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('length', False, 'int', 'child::cim:length/text()'),
+        ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
+        ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
+    ]
+
+    return set_attributes(PerpetualPeriod(), xml, nsmap, decodings)
+
+
 def decode_platform(xml, nsmap):
     """Decodes a platform instance from xml.
 
@@ -349,6 +392,24 @@ def decode_property(xml, nsmap):
     ]
 
     return set_attributes(Property(), xml, nsmap, decodings)
+
+
+def decode_real_calendar(xml, nsmap):
+    """Decodes a real calendar instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('length', False, 'int', 'child::cim:length/text()'),
+        ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
+        ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
+    ]
+
+    return set_attributes(RealCalendar(), xml, nsmap, decodings)
 
 
 def decode_responsible_party(xml, nsmap):

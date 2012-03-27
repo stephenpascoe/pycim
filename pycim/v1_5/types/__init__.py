@@ -1,6 +1,6 @@
 """A set of cim 1.5 packages.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.709395.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.969911.
 """
 
 # Module imports.
@@ -54,14 +54,17 @@ from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
 from pycim.v1_5.types.shared.citation import Citation
 from pycim.v1_5.types.shared.closed_date_range import ClosedDateRange
 from pycim.v1_5.types.shared.compiler import Compiler
+from pycim.v1_5.types.shared.daily_360 import Daily360
 from pycim.v1_5.types.shared.data_source import DataSource
 from pycim.v1_5.types.shared.date_range import DateRange
 from pycim.v1_5.types.shared.license import License
 from pycim.v1_5.types.shared.machine import Machine
 from pycim.v1_5.types.shared.machine_compiler_unit import MachineCompilerUnit
 from pycim.v1_5.types.shared.open_date_range import OpenDateRange
+from pycim.v1_5.types.shared.perpetual_period import PerpetualPeriod
 from pycim.v1_5.types.shared.platform import Platform
 from pycim.v1_5.types.shared.property import Property
+from pycim.v1_5.types.shared.real_calendar import RealCalendar
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 from pycim.v1_5.types.shared.responsible_party_contact_info import ResponsiblePartyContactInfo
 from pycim.v1_5.types.shared.standard import Standard
@@ -70,7 +73,11 @@ from pycim.v1_5.types.software.component_language import ComponentLanguage
 from pycim.v1_5.types.software.component_language_property import ComponentLanguageProperty
 from pycim.v1_5.types.software.component_property import ComponentProperty
 from pycim.v1_5.types.software.composition import Composition
+from pycim.v1_5.types.software.connection import Connection
+from pycim.v1_5.types.software.connection_endpoint import ConnectionEndpoint
+from pycim.v1_5.types.software.connection_property import ConnectionProperty
 from pycim.v1_5.types.software.coupling import Coupling
+from pycim.v1_5.types.software.coupling_endpoint import CouplingEndpoint
 from pycim.v1_5.types.software.coupling_property import CouplingProperty
 from pycim.v1_5.types.software.deployment import Deployment
 from pycim.v1_5.types.software.entry_point import EntryPoint
@@ -79,17 +86,22 @@ from pycim.v1_5.types.software.parallelisation import Parallelisation
 from pycim.v1_5.types.software.processor_component import ProcessorComponent
 from pycim.v1_5.types.software.rank import Rank
 from pycim.v1_5.types.software.software_component import SoftwareComponent
+from pycim.v1_5.types.software.spatial_regridding import SpatialRegridding
+from pycim.v1_5.types.software.spatial_regridding_property import SpatialRegriddingProperty
+from pycim.v1_5.types.software.spatial_regridding_user_method import SpatialRegriddingUserMethod
+from pycim.v1_5.types.software.time_lag import TimeLag
+from pycim.v1_5.types.software.time_transformation import TimeTransformation
 from pycim.v1_5.types.software.timing import Timing
 
 
 # Module exports.
-__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'GridMosaic', 'GridSpec', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'Platform', 'Property', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Coupling', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'Timing']
+__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'GridMosaic', 'GridSpec', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'Daily360', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'PerpetualPeriod', 'Platform', 'Property', 'RealCalendar', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Connection', 'ConnectionEndpoint', 'ConnectionProperty', 'Coupling', 'CouplingEndpoint', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'SpatialRegridding', 'SpatialRegriddingProperty', 'SpatialRegriddingUserMethod', 'TimeLag', 'TimeTransformation', 'Timing']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-26 18:08:48.709395"
+__date__ ="2012-03-27 17:29:36.969911"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

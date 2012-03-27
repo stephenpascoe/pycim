@@ -1,10 +1,11 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-26 18:08:48.704709.
+CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.961329.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
+from pycim.v1_5.decoding.decoder_for_data_package import *
 from pycim.v1_5.decoding.decoder_for_shared_package import *
 from pycim.v1_5.types.software import *
 
@@ -15,7 +16,11 @@ __all__ = [
     "decode_component_language_property", 
     "decode_component_property", 
     "decode_composition", 
+    "decode_connection", 
+    "decode_connection_endpoint", 
+    "decode_connection_property", 
     "decode_coupling", 
+    "decode_coupling_endpoint", 
     "decode_coupling_property", 
     "decode_deployment", 
     "decode_entry_point", 
@@ -24,6 +29,11 @@ __all__ = [
     "decode_processor_component", 
     "decode_rank", 
     "decode_software_component", 
+    "decode_spatial_regridding", 
+    "decode_spatial_regridding_property", 
+    "decode_spatial_regridding_user_method", 
+    "decode_time_lag", 
+    "decode_time_transformation", 
     "decode_timing"
 ]
 
@@ -31,7 +41,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-26 18:08:48.704709"
+__date__ ="2012-03-27 17:29:36.961329"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -109,6 +119,75 @@ def decode_composition(xml, nsmap):
     return set_attributes(Composition(), xml, nsmap, decodings)
 
 
+def decode_connection(xml, nsmap):
+    """Decodes a connection instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('priming', False, decode_data_object, 'child::cim:priming/cim:priming/cim:dataObject'),
+        ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
+        ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
+        ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
+        ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
+        ('priming_reference', False, decode_cim_reference, 'child::cim:priming/cim:reference'),
+        ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
+        ('sources', True, decode_connection_endpoint, 'child::cim:connectionSource'),
+        ('spatial_regridding', True, decode_spatial_regridding, 'child::cim:spatialRegridding'),
+        ('target', False, decode_connection_endpoint, 'child::cim:connectionTarget'),
+        ('time_lag', False, 'str', 'child::cim:timeLag'),
+        ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
+        ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
+        ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
+        ('transformers_references', True, decode_cim_reference, 'child::cim:transformer/cim:reference'),
+        ('type', False, 'str', 'child::cim:type/@value'),
+    ]
+
+    return set_attributes(Connection(), xml, nsmap, decodings)
+
+
+def decode_connection_endpoint(xml, nsmap):
+    """Decodes a connection endpoint instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('data_source', False, decode_data_object, 'child::cim:dataSource/cim:dataSource/cim:dataObject'),
+        ('data_source', False, decode_data_content, 'child::cim:dataSource/cim:dataSource/cim:dataContent'),
+        ('data_source', False, decode_component_property, 'child::cim:dataSource/cim:dataSource/cim:componentProperty'),
+        ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
+        ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
+        ('data_source_reference', False, decode_cim_reference, 'child::cim:dataSource/cim:reference'),
+        ('instance_id', False, 'str', 'child::cim:instanceID'),
+        ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
+    ]
+
+    return set_attributes(ConnectionEndpoint(), xml, nsmap, decodings)
+
+
+def decode_connection_property(xml, nsmap):
+    """Decodes a connection property instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('name', False, 'str', 'child::cim:name/text()'),
+        ('value', False, 'str', 'child::cim:value/text()'),
+    ]
+
+    return set_attributes(ConnectionProperty(), xml, nsmap, decodings)
+
+
 def decode_coupling(xml, nsmap):
     """Decodes a coupling instance from xml.
 
@@ -118,9 +197,51 @@ def decode_coupling(xml, nsmap):
 
     """
     decodings = [
+        ('connections', True, decode_connection, 'child::cim:connection'),
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('is_fully_specified', False, 'bool', '@fullySpecified'),
+        ('priming', False, decode_data_object, 'child::cim:priming/cim:priming/cim:dataObject'),
+        ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
+        ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
+        ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
+        ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
+        ('priming_reference', False, decode_cim_reference, 'child::cim:priming/cim:reference'),
+        ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
+        ('purpose', False, 'str', '@purpose'),
+        ('sources', True, decode_coupling_endpoint, 'child::cim:couplingSource'),
+        ('spatial_regriddings', True, decode_spatial_regridding, 'child::cim:spatialRegridding'),
+        ('target', False, decode_coupling_endpoint, 'child::cim:couplingTarget'),
+        ('time_lag', False, decode_time_lag, 'child::cim:timeLag'),
+        ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
+        ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
+        ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
+        ('transformers_references', True, decode_cim_reference, 'child::cim:transformer/cim:reference'),
+        ('type', False, 'str', 'child::cim:type/@value'),
     ]
 
     return set_attributes(Coupling(), xml, nsmap, decodings)
+
+
+def decode_coupling_endpoint(xml, nsmap):
+    """Decodes a coupling endpoint instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('data_source', False, decode_data_object, 'child::cim:dataSource/cim:dataSource/cim:dataObject'),
+        ('data_source', False, decode_data_content, 'child::cim:dataSource/cim:dataSource/cim:dataContent'),
+        ('data_source', False, decode_component_property, 'child::cim:dataSource/cim:dataSource/cim:componentProperty'),
+        ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
+        ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
+        ('data_source_reference', False, decode_cim_reference, 'child::cim:dataSource/cim:reference'),
+        ('instance_id', False, 'str', 'child::cim:instanceID'),
+        ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
+    ]
+
+    return set_attributes(CouplingEndpoint(), xml, nsmap, decodings)
 
 
 def decode_coupling_property(xml, nsmap):
@@ -280,6 +401,89 @@ def decode_software_component(xml, nsmap):
     return set_attributes(SoftwareComponent(), xml, nsmap, decodings)
 
 
+def decode_spatial_regridding(xml, nsmap):
+    """Decodes a spatial regridding instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('dimension', False, 'str', 'child::cim:spatialRegriddingDimension/text()'),
+        ('properties', True, decode_spatial_regridding_property, 'child::cim:spatialRegriddingProperty'),
+        ('standard_method', False, 'str', 'child::cim:spatialRegriddingStandardMethod/text()'),
+        ('user_method', False, decode_spatial_regridding_user_method, 'child::cim:spatialRegriddingUserMethod'),
+    ]
+
+    return set_attributes(SpatialRegridding(), xml, nsmap, decodings)
+
+
+def decode_spatial_regridding_property(xml, nsmap):
+    """Decodes a spatial regridding property instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('name', False, 'str', 'child::cim:name/text()'),
+        ('value', False, 'str', 'child::cim:value/text()'),
+    ]
+
+    return set_attributes(SpatialRegriddingProperty(), xml, nsmap, decodings)
+
+
+def decode_spatial_regridding_user_method(xml, nsmap):
+    """Decodes a spatial regridding user method instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('file', False, decode_data_object, 'child::cim:file/cim:dataObject'),
+        ('file_reference', False, decode_cim_reference, 'child::cim:file/cim:reference'),
+        ('name', False, 'str', 'child::cim:name/text()'),
+    ]
+
+    return set_attributes(SpatialRegriddingUserMethod(), xml, nsmap, decodings)
+
+
+def decode_time_lag(xml, nsmap):
+    """Decodes a time lag instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('units', False, 'str', '@units'),
+        ('value', False, 'int', 'child::cim:value/text()'),
+    ]
+
+    return set_attributes(TimeLag(), xml, nsmap, decodings)
+
+
+def decode_time_transformation(xml, nsmap):
+    """Decodes a time transformation instance from xml.
+
+    Keyword arguments:
+    xml -- etree xml element from which entity is to be decoded.
+    nsmap -- set of xml namespace mappings.
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description/text()'),
+        ('mapping_type', False, 'str', 'child::cim:mappingType/@value'),
+    ]
+
+    return set_attributes(TimeTransformation(), xml, nsmap, decodings)
+
+
 def decode_timing(xml, nsmap):
     """Decodes a timing instance from xml.
 
@@ -289,6 +493,11 @@ def decode_timing(xml, nsmap):
 
     """
     decodings = [
+        ('end', False, 'datetime', 'child::cim:end/text()'),
+        ('is_variable_rate', False, 'bool', '@variableRate'),
+        ('rate', False, 'int', 'child::cim:rate/text()'),
+        ('start', False, 'datetime', 'child::cim:start/text()'),
+        ('units', False, 'str', '@units'),
     ]
 
     return set_attributes(Timing(), xml, nsmap, decodings)
