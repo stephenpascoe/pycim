@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.655773.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 16:29:10.558697.
 """
 
 # Module imports.
@@ -25,7 +25,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-28 15:02:44.655773"
+__date__ ="2012-03-28 16:29:10.558697"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -139,9 +139,22 @@ def decode_grid_tile(xml, nsmap):
     """
     decodings = [
         ('description', False, 'str', 'child::cim:description/text()'),
+        ('discretization_type', False, 'str', '@discretizationType'),
         ('extent', False, decode_grid_extent, 'child::cim:extent'),
+        ('geometry_type', False, 'str', '@geometryType'),
         ('horizontal_resolution', False, decode_grid_tile_resolution_type, 'child::cim:horizontalResolution'),
+        ('id', False, 'str', '@id'),
+        ('is_conformal', False, 'bool', '@isConformal'),
+        ('is_regular', False, 'bool', '@isRegular'),
+        ('is_terrain_following', False, 'bool', '@isTerrainFollowing'),
+        ('is_uniform', False, 'bool', '@isUniform'),
+        ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('mnemonic', False, 'str', 'child::cim:mnemonic/text()'),
+        ('nx', False, 'int', '@nx'),
+        ('ny', False, 'int', '@ny'),
+        ('nz', False, 'int', '@nz'),
+        ('refinement_scheme', False, 'str', '@refinementScheme'),
+        ('short_name', False, 'str', 'child::cim:shortName/text()'),
         ('vertical_resolution', False, decode_grid_tile_resolution_type, 'child::cim:verticalResolution'),
         ('zcoords', False, decode_vertical_coordinate_list, 'child::cim:zcoords'),
     ]
