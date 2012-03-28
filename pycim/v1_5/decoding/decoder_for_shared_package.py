@@ -1,6 +1,6 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.957989.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.657645.
 """
 
 # Module imports.
@@ -42,7 +42,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-27 17:29:36.957989"
+__date__ ="2012-03-28 15:02:44.657645"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -231,6 +231,12 @@ def decode_compiler(xml, nsmap):
 
     """
     decodings = [
+        ('environment_variables', False, 'str', 'child::cim:compilerEnvironmentVariables/text()'),
+        ('language', False, 'str', 'child::cim:compilerLanguage/text()'),
+        ('name', False, 'str', 'child::cim:compilerName/text()'),
+        ('options', False, 'str', 'child::cim:compilerOptions/text()'),
+        ('type', False, 'str', 'child::cim:compilerType/text()'),
+        ('version', False, 'str', 'child::cim:compilerVersion/text()'),
     ]
 
     return set_attributes(Compiler(), xml, nsmap, decodings)
@@ -306,6 +312,18 @@ def decode_machine(xml, nsmap):
 
     """
     decodings = [
+        ('cores_per_processor', False, 'int', 'child::cim:machineCoresPerProcessor/text()'),
+        ('description', False, 'str', 'child::cim:machineDescription/text()'),
+        ('interconnect', False, 'str', 'child::cim:machineInterconnect/@value'),
+        ('libraries', True, 'str', 'child::cim:machineLibrary'),
+        ('location', False, 'str', 'child::cim:machineLocation/text()'),
+        ('maximum_processors', False, 'int', 'child::cim:machineMaximumProcessors/text()'),
+        ('name', False, 'str', 'child::cim:machineName/text()'),
+        ('operating_system', False, 'str', 'child::cim:machineOperatingSystem/@value'),
+        ('processor_type', False, 'str', 'child::cim:machineProcessorType/@value'),
+        ('system', False, 'str', 'child::cim:machineSystem/text()'),
+        ('type', False, 'str', '@machineType'),
+        ('vendor', False, 'str', 'child::cim:machineVendor/@value'),
     ]
 
     return set_attributes(Machine(), xml, nsmap, decodings)
@@ -320,6 +338,8 @@ def decode_machine_compiler_unit(xml, nsmap):
 
     """
     decodings = [
+        ('compilers', True, decode_compiler, 'child::cim:compiler'),
+        ('machine', False, decode_machine, 'child::cim:machine'),
     ]
 
     return set_attributes(MachineCompilerUnit(), xml, nsmap, decodings)
@@ -370,9 +390,11 @@ def decode_platform(xml, nsmap):
     """
     decodings = [
         ('cim_info', False, decode_cim_info, 'self::cim:platform'),
+        ('contacts', True, decode_responsible_party, 'child::cim:contact'),
         ('description', False, 'str', 'child::cim:description/text()'),
         ('long_name', False, 'str', 'child::cim:longName/text()'),
         ('short_name', False, 'str', 'child::cim:shortName/text()'),
+        ('units', True, decode_machine_compiler_unit, 'child::cim:unit'),
     ]
 
     return set_attributes(Platform(), xml, nsmap, decodings)

@@ -1,6 +1,6 @@
 """An enumeration within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.123546.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.823146.
 """
 
 # Module exports.
@@ -10,7 +10,7 @@ __all__ = ['SpatialRegriddingStandardMethodType']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.123546$"
+__date__ ="$2012-03-28 15:02:44.823146$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

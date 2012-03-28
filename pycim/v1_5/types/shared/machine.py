@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.058699.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.757425.
 """
 
 # Module imports.
@@ -10,6 +10,11 @@ import types
 import uuid
 
 # Intra/Inter-package imports.
+from pycim.v1_5.types.shared.interconnect_type import InterconnectType
+from pycim.v1_5.types.shared.operating_system_type import OperatingSystemType
+from pycim.v1_5.types.shared.processor_type import ProcessorType
+from pycim.v1_5.types.shared.machine_type import MachineType
+from pycim.v1_5.types.shared.machine_vendor_type import MachineVendorType
 
 
 
@@ -20,7 +25,7 @@ __all__ = ['Machine']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.058699$"
+__date__ ="$2012-03-28 15:02:44.757425$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,16 +45,16 @@ class Machine(object):
 
         self.__cores_per_processor = int()                          # type = int
         self.__description = str()                                  # type = str
-        self.__interconnect = str()                                 # type = str
+        self.__interconnect = None                                  # type = shared.InterconnectType
         self.__libraries = []                                       # type = str
         self.__location = str()                                     # type = str
         self.__maximum_processors = int()                           # type = int
         self.__name = str()                                         # type = str
-        self.__operating_system = str()                             # type = str
-        self.__processor_type = str()                               # type = str
+        self.__operating_system = None                              # type = shared.OperatingSystemType
+        self.__processor_type = None                                # type = shared.ProcessorType
         self.__system = str()                                       # type = str
-        self.__type = str()                                         # type = str
-        self.__vendor = str()                                       # type = str
+        self.__type = None                                          # type = shared.MachineType
+        self.__vendor = None                                        # type = shared.MachineVendorType
 
 
     @property
@@ -180,20 +185,22 @@ class Machine(object):
 
     @property
     def name(self):
-        """Gets value of {class-name} name property."""
+        """Gets value of machine name property."""
         return self.__name
 
     @name.setter
     def name(self, value):
-        if value is not None and not isinstance(value, str):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} name property."""
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, str):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of machine name property."""
         self.__name = value
 
     @name.deleter
     def name(self, value):
-        """Deletes {class-name} name property."""
-        raise TypeError("Cannot delete {class-name} name property.")
+        """Deletes machine name property."""
+        raise TypeError("Cannot delete machine name property.")
 
 
     @property
@@ -306,16 +313,16 @@ class Machine(object):
         d = dict()
         append(d, 'cores_per_processor', self.__cores_per_processor, False, True, False)
         append(d, 'description', self.__description, False, True, False)
-        append(d, 'interconnect', self.__interconnect, False, True, False)
+        append(d, 'interconnect', self.__interconnect, False, False, True)
         append(d, 'libraries', self.__libraries, True, True, False)
         append(d, 'location', self.__location, False, True, False)
         append(d, 'maximum_processors', self.__maximum_processors, False, True, False)
         append(d, 'name', self.__name, False, True, False)
-        append(d, 'operating_system', self.__operating_system, False, True, False)
-        append(d, 'processor_type', self.__processor_type, False, True, False)
+        append(d, 'operating_system', self.__operating_system, False, False, True)
+        append(d, 'processor_type', self.__processor_type, False, False, True)
         append(d, 'system', self.__system, False, True, False)
-        append(d, 'type', self.__type, False, True, False)
-        append(d, 'vendor', self.__vendor, False, True, False)
+        append(d, 'type', self.__type, False, False, True)
+        append(d, 'vendor', self.__vendor, False, False, True)
         return d
 
 

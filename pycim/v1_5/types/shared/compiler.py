@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.052860.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.751152.
 """
 
 # Module imports.
@@ -21,7 +21,7 @@ __all__ = ['Compiler']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.052860$"
+__date__ ="$2012-03-28 15:02:44.751152$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -33,7 +33,7 @@ __status__ = "Production"
 class Compiler(object):
     """A class within the cim v1.5 type system.
 
-    A language of a compiler used on a particular platform
+    A description of a compiler used on a particular platform.
     """
     def __init__(self):
         """Constructor"""
@@ -87,20 +87,22 @@ class Compiler(object):
 
     @property
     def name(self):
-        """Gets value of {class-name} name property."""
+        """Gets value of compiler name property."""
         return self.__name
 
     @name.setter
     def name(self, value):
-        if value is not None and not isinstance(value, str):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} name property."""
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, str):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of compiler name property."""
         self.__name = value
 
     @name.deleter
     def name(self, value):
-        """Deletes {class-name} name property."""
-        raise TypeError("Cannot delete {class-name} name property.")
+        """Deletes compiler name property."""
+        raise TypeError("Cannot delete compiler name property.")
 
 
     @property
@@ -143,20 +145,22 @@ class Compiler(object):
 
     @property
     def version(self):
-        """Gets value of {class-name} version property."""
+        """Gets value of compiler version property."""
         return self.__version
 
     @version.setter
     def version(self, value):
-        if value is not None and not isinstance(value, str):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} version property."""
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, str):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of compiler version property."""
         self.__version = value
 
     @version.deleter
     def version(self, value):
-        """Deletes {class-name} version property."""
-        raise TypeError("Cannot delete {class-name} version property.")
+        """Deletes compiler version property."""
+        raise TypeError("Cannot delete compiler version property.")
 
 
 

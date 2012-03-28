@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.109699.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.809136.
 """
 
 # Module imports.
@@ -21,7 +21,7 @@ __all__ = ['SpatialRegriddingProperty']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.109699$"
+__date__ ="$2012-03-28 15:02:44.809136$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

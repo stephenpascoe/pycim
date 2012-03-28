@@ -103,7 +103,7 @@ def convert_to_integer(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    return int(as_string)
+    return None if as_string is None else int(as_string)
 
 
 def convert_to_float(xml, nsmap=None):
@@ -115,7 +115,7 @@ def convert_to_float(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    return float(as_string)
+    return None if as_string is None else float(as_string)
 
 
 def convert_to_uid(xml, nsmap=None):
@@ -142,10 +142,7 @@ def convert_to_datetime(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None:
-        return None
-    else:
-        return dateutil_parser.parse(as_string)
+    return None if as_string is None else dateutil_parser.parse(as_string)
 
 
 # Set of simple type convertors.

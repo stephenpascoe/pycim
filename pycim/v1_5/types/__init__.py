@@ -1,6 +1,6 @@
 """A set of cim 1.5 packages.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.969911.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.668012.
 """
 
 # Module imports.
@@ -41,8 +41,14 @@ from pycim.v1_5.types.data.data_storage_db import DataStorageDb
 from pycim.v1_5.types.data.data_storage_file import DataStorageFile
 from pycim.v1_5.types.data.data_storage_ip import DataStorageIp
 from pycim.v1_5.types.data.data_topic import DataTopic
+from pycim.v1_5.types.grids.coordinate_list import CoordinateList
+from pycim.v1_5.types.grids.grid_extent import GridExtent
 from pycim.v1_5.types.grids.grid_mosaic import GridMosaic
+from pycim.v1_5.types.grids.grid_property import GridProperty
 from pycim.v1_5.types.grids.grid_spec import GridSpec
+from pycim.v1_5.types.grids.grid_tile import GridTile
+from pycim.v1_5.types.grids.grid_tile_resolution_type import GridTileResolutionType
+from pycim.v1_5.types.grids.vertical_coordinate_list import VerticalCoordinateList
 from pycim.v1_5.types.shared.calendar import Calendar
 from pycim.v1_5.types.shared.cim_document_relationship import CimDocumentRelationship
 from pycim.v1_5.types.shared.cim_document_relationship_target import CimDocumentRelationshipTarget
@@ -95,13 +101,13 @@ from pycim.v1_5.types.software.timing import Timing
 
 
 # Module exports.
-__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'GridMosaic', 'GridSpec', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'Daily360', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'PerpetualPeriod', 'Platform', 'Property', 'RealCalendar', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Connection', 'ConnectionEndpoint', 'ConnectionProperty', 'Coupling', 'CouplingEndpoint', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'SpatialRegridding', 'SpatialRegriddingProperty', 'SpatialRegriddingUserMethod', 'TimeLag', 'TimeTransformation', 'Timing']
+__all__ = ['Activity', 'BoundaryCondition', 'Conformance', 'Ensemble', 'EnsembleMember', 'Experiment', 'ExperimentRelationship', 'ExperimentRelationshipTarget', 'InitialCondition', 'MeasurementCampaign', 'NumericalActivity', 'NumericalExperiment', 'NumericalRequirement', 'OutputRequirement', 'PhysicalModification', 'RequirementOption', 'Simulation', 'SimulationComposite', 'SimulationRelationship', 'SimulationRelationshipTarget', 'SimulationRun', 'SpatioTemporalConstraint', 'DataContent', 'DataDistribution', 'DataExtent', 'DataExtentGeographical', 'DataExtentTemporal', 'DataExtentTimeInterval', 'DataHierarchyLevel', 'DataObject', 'DataProperty', 'DataRestriction', 'DataStorage', 'DataStorageDb', 'DataStorageFile', 'DataStorageIp', 'DataTopic', 'CoordinateList', 'GridExtent', 'GridMosaic', 'GridProperty', 'GridSpec', 'GridTile', 'GridTileResolutionType', 'VerticalCoordinateList', 'Calendar', 'CimDocumentRelationship', 'CimDocumentRelationshipTarget', 'CimGenealogy', 'CimInfo', 'CimReference', 'CimRelationship', 'CimTypeInfo', 'Citation', 'ClosedDateRange', 'Compiler', 'Daily360', 'DataSource', 'DateRange', 'License', 'Machine', 'MachineCompilerUnit', 'OpenDateRange', 'PerpetualPeriod', 'Platform', 'Property', 'RealCalendar', 'ResponsibleParty', 'ResponsiblePartyContactInfo', 'Standard', 'StandardName', 'ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty', 'Composition', 'Connection', 'ConnectionEndpoint', 'ConnectionProperty', 'Coupling', 'CouplingEndpoint', 'CouplingProperty', 'Deployment', 'EntryPoint', 'ModelComponent', 'Parallelisation', 'ProcessorComponent', 'Rank', 'SoftwareComponent', 'SpatialRegridding', 'SpatialRegriddingProperty', 'SpatialRegriddingUserMethod', 'TimeLag', 'TimeTransformation', 'Timing']
 
 
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-27 17:29:36.969911"
+__date__ ="2012-03-28 15:02:44.668012"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

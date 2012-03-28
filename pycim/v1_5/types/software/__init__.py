@@ -1,6 +1,6 @@
 """A set of cim 1.5 entities.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:36.973448.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.671842.
 """
 
 # Module imports.
@@ -36,7 +36,7 @@ __all__ = ['ComponentLanguage', 'ComponentLanguageProperty', 'ComponentProperty'
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-27 17:29:36.973448"
+__date__ ="2012-03-28 15:02:44.671842"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

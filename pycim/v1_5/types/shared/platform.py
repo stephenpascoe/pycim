@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.064135.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.762563.
 """
 
 # Module imports.
@@ -23,7 +23,7 @@ __all__ = ['Platform']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.064135$"
+__date__ ="$2012-03-28 15:02:44.762563$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -42,11 +42,11 @@ class Platform(object):
         super(Platform, self).__init__()
 
         self.__cim_info = None                                      # type = shared.CimInfo
-        self.__contact = []                                         # type = shared.ResponsibleParty
+        self.__contacts = []                                        # type = shared.ResponsibleParty
         self.__description = str()                                  # type = str
         self.__long_name = str()                                    # type = str
         self.__short_name = str()                                   # type = str
-        self.__unit = None                                          # type = shared.MachineCompilerUnit
+        self.__units = []                                           # type = shared.MachineCompilerUnit
 
 
     @property
@@ -70,35 +70,35 @@ class Platform(object):
 
 
     @property
-    def contact(self):
-        """Gets value of {class-name} contact property."""
-        return list(self.__contact)
+    def contacts(self):
+        """Gets value of {class-name} contacts property."""
+        return list(self.__contacts)
 
-    @contact.setter
-    def contact(self, value):
-        """Sets value of {class-name} contact property."""
+    @contacts.setter
+    def contacts(self, value):
+        """Sets value of {class-name} contacts property."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
-        self.__contact = []
+        self.__contacts = []
         for i in value:
-            self.append_to_contact(i)
+            self.append_to_contacts(i)
 
-    @contact.deleter
-    def contact(self, value):
-        """Deletes {class-name} contact property."""
-        raise TypeError("Cannot delete {class-name} contact property.")
+    @contacts.deleter
+    def contacts(self, value):
+        """Deletes {class-name} contacts property."""
+        raise TypeError("Cannot delete {class-name} contacts property.")
 
-    def append_to_contact(self, item):
-        """Appends an item to the managed {class-name} contact collection."""
+    def append_to_contacts(self, item):
+        """Appends an item to the managed {class-name} contacts collection."""
         if not isinstance(item, ResponsibleParty):
             raise TypeError("item is of incorrect type.")
-        self.__contact.append(item)
+        self.__contacts.append(item)
 
-    def remove_from_contact(self, item):
-        """Removes an item from the managed {class-name} contact collection."""
+    def remove_from_contacts(self, item):
+        """Removes an item from the managed {class-name} contacts collection."""
         if not isinstance(item, ResponsibleParty):
             raise TypeError("item is of incorrect type.")
-        self.__contact.remove(item)
+        self.__contacts.remove(item)
 
 
     @property
@@ -139,38 +139,54 @@ class Platform(object):
 
     @property
     def short_name(self):
-        """Gets value of {class-name} short_name property."""
+        """Gets value of platform short_name property."""
         return self.__short_name
 
     @short_name.setter
     def short_name(self, value):
-        if value is not None and not isinstance(value, str):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} short_name property."""
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, str):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of platform short_name property."""
         self.__short_name = value
 
     @short_name.deleter
     def short_name(self, value):
-        """Deletes {class-name} short_name property."""
-        raise TypeError("Cannot delete {class-name} short_name property.")
+        """Deletes platform short_name property."""
+        raise TypeError("Cannot delete platform short_name property.")
 
 
     @property
-    def unit(self):
-        """Gets value of {class-name} unit property."""
-        return self.__unit
+    def units(self):
+        """Gets value of {class-name} units property."""
+        return list(self.__units)
 
-    @unit.setter
-    def unit(self, value):
-        if value is not None and not isinstance(value, MachineCompilerUnit):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} unit property."""
-        self.__unit = value
+    @units.setter
+    def units(self, value):
+        """Sets value of {class-name} units property."""
+        if not isinstance(value, types.ListType):
+            raise TypeError("value must be an iterable type.")
+        self.__units = []
+        for i in value:
+            self.append_to_units(i)
 
-    @unit.deleter
-    def unit(self, value):
-        """Deletes {class-name} unit property."""
-        raise TypeError("Cannot delete {class-name} unit property.")
+    @units.deleter
+    def units(self, value):
+        """Deletes {class-name} units property."""
+        raise TypeError("Cannot delete {class-name} units property.")
+
+    def append_to_units(self, item):
+        """Appends an item to the managed {class-name} units collection."""
+        if not isinstance(item, MachineCompilerUnit):
+            raise TypeError("item is of incorrect type.")
+        self.__units.append(item)
+
+    def remove_from_units(self, item):
+        """Removes an item from the managed {class-name} units collection."""
+        if not isinstance(item, MachineCompilerUnit):
+            raise TypeError("item is of incorrect type.")
+        self.__units.remove(item)
 
 
 
@@ -192,11 +208,11 @@ class Platform(object):
         # Populate a deep dictionary.
         d = dict()
         append(d, 'cim_info', self.__cim_info, False, False, False)
-        append(d, 'contact', self.__contact, True, False, False)
+        append(d, 'contacts', self.__contacts, True, False, False)
         append(d, 'description', self.__description, False, True, False)
         append(d, 'long_name', self.__long_name, False, True, False)
         append(d, 'short_name', self.__short_name, False, True, False)
-        append(d, 'unit', self.__unit, False, False, False)
+        append(d, 'units', self.__units, True, False, False)
         return d
 
 

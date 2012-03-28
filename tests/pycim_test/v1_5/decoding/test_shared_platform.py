@@ -55,14 +55,40 @@ class TestDecodePlatform(unittest.TestCase):
     def test_decode_obj_from_xml(self):
         obj = decode_obj_from_xml(CIM, XML_FILE, TYPE)
         
-        assert obj.cim_info.id == uuid.UUID('b464433a-d3a5-11df-837f-00163e9152a5')
-        assert obj.cim_info.version == '2'
-        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-06 10:06:42.266723')
+        assert obj.cim_info.id == uuid.UUID('b765775a-e2ac-11df-9efb-00163e9152a5')
+        assert obj.cim_info.version == '1'
+        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-01 13:55:56.232228')
 
-        assert obj.long_name == 'RCP2.6'
-        assert obj.short_name == 'rcp26'
-        assert obj.description.startswith('Future projection (2006-2100) forced by RCP2.6.')
+        assert obj.description is None
+        assert obj.long_name == 'Machine IBM Power 6 and compiler Other'
+        assert obj.short_name == 'IBM Power 6_Other'
 
+        assert len(obj.contacts) == 1
+        assert obj.contacts[0].abbreviation == 'MOHC'
+        assert obj.contacts[0].organisation_name == 'UK Met Office Hadley Centre'
+        assert obj.contacts[0].role == 'contact'
+        
+        assert len(obj.units) == 1
+        assert obj.units[0].machine is not None
+        assert obj.units[0].machine.cores_per_processor == 32
+        assert obj.units[0].machine.description is None
+        assert obj.units[0].machine.interconnect == 'Infiniband'
+        assert obj.units[0].machine.name == 'IBM Power 6'
+        assert len(obj.units[0].machine.libraries) == 0
+        assert obj.units[0].machine.location is None
+        assert obj.units[0].machine.maximum_processors == 2
+        assert obj.units[0].machine.operating_system == 'AIX'
+        assert obj.units[0].machine.system == 'Parallel'
+        assert obj.units[0].machine.type is None
+        assert obj.units[0].machine.vendor == 'IBM'
+        assert obj.units[0].machine.processor_type == 'Other'
+        assert len(obj.units[0].compilers) == 1
+        assert obj.units[0].compilers[0].environment_variables is None
+        assert obj.units[0].compilers[0].language is None
+        assert obj.units[0].compilers[0].name == 'Other'
+        assert obj.units[0].compilers[0].options is None
+        assert obj.units[0].compilers[0].type is None
+        assert obj.units[0].compilers[0].version == '12.1.0.0'
 
 
     def test_representation_dict(self):

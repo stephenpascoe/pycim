@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-27 17:29:37.061035.
+CIM CODE GENERATOR :: Code generated @ 2012-03-28 15:02:44.759322.
 """
 
 # Module imports.
@@ -22,7 +22,7 @@ __all__ = ['MachineCompilerUnit']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-27 17:29:37.061035$"
+__date__ ="$2012-03-28 15:02:44.759322$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -40,58 +40,60 @@ class MachineCompilerUnit(object):
         """Constructor"""
         super(MachineCompilerUnit, self).__init__()
 
-        self.__compiler = []                                        # type = shared.Compiler
+        self.__compilers = []                                       # type = shared.Compiler
         self.__machine = None                                       # type = shared.Machine
 
 
     @property
-    def compiler(self):
-        """Gets value of {class-name} compiler property."""
-        return list(self.__compiler)
+    def compilers(self):
+        """Gets value of {class-name} compilers property."""
+        return list(self.__compilers)
 
-    @compiler.setter
-    def compiler(self, value):
-        """Sets value of {class-name} compiler property."""
+    @compilers.setter
+    def compilers(self, value):
+        """Sets value of {class-name} compilers property."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
-        self.__compiler = []
+        self.__compilers = []
         for i in value:
-            self.append_to_compiler(i)
+            self.append_to_compilers(i)
 
-    @compiler.deleter
-    def compiler(self, value):
-        """Deletes {class-name} compiler property."""
-        raise TypeError("Cannot delete {class-name} compiler property.")
+    @compilers.deleter
+    def compilers(self, value):
+        """Deletes {class-name} compilers property."""
+        raise TypeError("Cannot delete {class-name} compilers property.")
 
-    def append_to_compiler(self, item):
-        """Appends an item to the managed {class-name} compiler collection."""
+    def append_to_compilers(self, item):
+        """Appends an item to the managed {class-name} compilers collection."""
         if not isinstance(item, Compiler):
             raise TypeError("item is of incorrect type.")
-        self.__compiler.append(item)
+        self.__compilers.append(item)
 
-    def remove_from_compiler(self, item):
-        """Removes an item from the managed {class-name} compiler collection."""
+    def remove_from_compilers(self, item):
+        """Removes an item from the managed {class-name} compilers collection."""
         if not isinstance(item, Compiler):
             raise TypeError("item is of incorrect type.")
-        self.__compiler.remove(item)
+        self.__compilers.remove(item)
 
 
     @property
     def machine(self):
-        """Gets value of {class-name} machine property."""
+        """Gets value of machine compiler unit machine property."""
         return self.__machine
 
     @machine.setter
     def machine(self, value):
-        if value is not None and not isinstance(value, Machine):
-            raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
-        """Sets value of {class-name} machine property."""
+        if value is None:
+            raise TypeError("Value cannot be null.")
+        elif not isinstance(value, Machine):
+            raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        """Sets value of machine compiler unit machine property."""
         self.__machine = value
 
     @machine.deleter
     def machine(self, value):
-        """Deletes {class-name} machine property."""
-        raise TypeError("Cannot delete {class-name} machine property.")
+        """Deletes machine compiler unit machine property."""
+        raise TypeError("Cannot delete machine compiler unit machine property.")
 
 
 
@@ -112,7 +114,7 @@ class MachineCompilerUnit(object):
 
         # Populate a deep dictionary.
         d = dict()
-        append(d, 'compiler', self.__compiler, True, False, False)
+        append(d, 'compilers', self.__compilers, True, False, False)
         append(d, 'machine', self.__machine, False, False, False)
         return d
 

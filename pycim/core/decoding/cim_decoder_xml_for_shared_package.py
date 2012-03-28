@@ -100,7 +100,6 @@ def decode_cim_reference(xml, nsmap):
 
     """
     from lxml import etree as et
-    print et.tostring(xml)
 
     decodings = [
         ('id', 'child::cim:id/text()', 'uid', False),
