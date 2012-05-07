@@ -1,4 +1,12 @@
-<modelComponent xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+<modelComponent 
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas"
+    xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+
     <shortName>HadGEM2-A</shortName>
     <longName>Hadley Global Environment Model 2 - Atmosphere</longName>
     <description>The HadGEM2-A model is a configuration of the HadGEM2 model which is an atmosphere only simulation with other component interfaces replaced with ancillary file input.</description>

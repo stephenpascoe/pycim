@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-28 16:29:10.861615.
+CIM CODE GENERATOR :: Code generated @ 2012-05-02 12:24:01.307028.
 """
 
 # Module imports.
@@ -11,6 +11,7 @@ import uuid
 
 # Intra/Inter-package imports.
 from pycim.v1_5.types.software.software_component import SoftwareComponent
+from pycim.v1_5.types.activity.activity import Activity
 from pycim.v1_5.types.shared.cim_info import CimInfo
 from pycim.v1_5.types.software.timing import Timing
 from pycim.v1_5.types.software.model_component_type import ModelComponentType
@@ -24,7 +25,7 @@ __all__ = ['ModelComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-28 16:29:10.861615$"
+__date__ ="$2012-05-02 12:24:01.307028$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -42,7 +43,7 @@ class ModelComponent(SoftwareComponent):
         """Constructor"""
         super(ModelComponent, self).__init__()
 
-        self.__activity = str()                                     # type = str
+        self.__activity = None                                      # type = activity.Activity
         self.__cim_info = None                                      # type = shared.CimInfo
         self.__timing = None                                        # type = software.Timing
         self.__types = []                                           # type = software.ModelComponentType
@@ -55,7 +56,7 @@ class ModelComponent(SoftwareComponent):
 
     @activity.setter
     def activity(self, value):
-        if value is not None and not isinstance(value, str):
+        if value is not None and not isinstance(value, Activity):
             raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
         """Sets value of {class-name} activity property."""
         self.__activity = value
@@ -160,7 +161,7 @@ class ModelComponent(SoftwareComponent):
 
         # Populate a deep dictionary.
         d = dict(super(ModelComponent, self).as_dict())
-        append(d, 'activity', self.__activity, False, True, False)
+        append(d, 'activity', self.__activity, False, False, False)
         append(d, 'cim_info', self.__cim_info, False, False, False)
         append(d, 'timing', self.__timing, False, False, False)
         append(d, 'types', self.__types, True, False, True)

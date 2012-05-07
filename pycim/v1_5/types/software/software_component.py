@@ -1,6 +1,6 @@
 """A class within cim v1.5 type system.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-28 16:29:10.867671.
+CIM CODE GENERATOR :: Code generated @ 2012-05-02 12:24:01.313284.
 """
 
 # Module imports.
@@ -18,6 +18,7 @@ from pycim.v1_5.types.software.composition import Composition
 from pycim.v1_5.types.software.coupling_framework_type import CouplingFrameworkType
 from pycim.v1_5.types.software.entry_point import EntryPoint
 from pycim.v1_5.types.software.deployment import Deployment
+from pycim.v1_5.types.grids.grid_spec import GridSpec
 from pycim.v1_5.types.shared.license import License
 from pycim.v1_5.types.shared.responsible_party import ResponsibleParty
 
@@ -30,7 +31,7 @@ __all__ = ['SoftwareComponent']
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="$2012-03-28 16:29:10.867671$"
+__date__ ="$2012-05-02 12:24:01.313284$"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"
@@ -58,7 +59,7 @@ class SoftwareComponent(DataSource):
         self.__deployments = []                                     # type = software.Deployment
         self.__description = str()                                  # type = str
         self.__funding_sources = []                                 # type = str
-        self.__grid = str()                                         # type = str
+        self.__grid = None                                          # type = grids.GridSpec
         self.__is_embedded = bool()                                 # type = bool
         self.__license = None                                       # type = shared.License
         self.__long_name = str()                                    # type = str
@@ -357,7 +358,7 @@ class SoftwareComponent(DataSource):
 
     @grid.setter
     def grid(self, value):
-        if value is not None and not isinstance(value, str):
+        if value is not None and not isinstance(value, GridSpec):
             raise TypeError("Invalid value type  : VALUE = {0}.".format(value))
         """Sets value of {class-name} grid property."""
         self.__grid = value
@@ -658,7 +659,7 @@ class SoftwareComponent(DataSource):
         append(d, 'deployments', self.__deployments, True, False, False)
         append(d, 'description', self.__description, False, True, False)
         append(d, 'funding_sources', self.__funding_sources, True, True, False)
-        append(d, 'grid', self.__grid, False, True, False)
+        append(d, 'grid', self.__grid, False, False, False)
         append(d, 'is_embedded', self.__is_embedded, False, True, False)
         append(d, 'license', self.__license, False, False, False)
         append(d, 'long_name', self.__long_name, False, True, False)

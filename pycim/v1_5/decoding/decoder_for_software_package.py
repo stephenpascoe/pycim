@@ -1,11 +1,13 @@
 """A set of cim 1.5 decodings.
 
-CIM CODE GENERATOR :: Code generated @ 2012-03-28 16:29:10.566637.
+CIM CODE GENERATOR :: Code generated @ 2012-05-02 12:24:01.172000.
 """
 
 # Module imports.
 from pycim.core.decoding.cim_decoder_xml_utils import *
+from pycim.v1_5.decoding.decoder_for_activity_package import *
 from pycim.v1_5.decoding.decoder_for_data_package import *
+from pycim.v1_5.decoding.decoder_for_grids_package import *
 from pycim.v1_5.decoding.decoder_for_shared_package import *
 from pycim.v1_5.types.software import *
 
@@ -41,7 +43,7 @@ __all__ = [
 # Module provenance info.
 __author__="Mark Morgan"
 __copyright__ = "Copyright 2012 - Institut Pierre Simon Laplace."
-__date__ ="2012-03-28 16:29:10.566637"
+__date__ ="2012-05-02 12:24:01.172000"
 __license__ = "GPL"
 __version__ = "1.5.0"
 __maintainer__ = "Mark Morgan"

@@ -8,7 +8,9 @@ import simplejson
 import uuid
 
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_SCHEMAS
+from pycim.core.utils.dict_utils import convert_dict_keys
+from pycim.core.utils.string_utils import convert_to_pascal_case
 
 
 # Module exports.
@@ -54,9 +56,14 @@ def encode(instance, version):
     # Defensive programming.
     if instance is None:
         raise CIMException('Cannot encode null instances.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
 
-    # Convert dictionary representation of instance.
+    # Get dictionary representation of instance.
     d = instance.as_dict()
+
+    # Ensure json naming conventions are honoured.
+    d = convert_dict_keys(d, convert_to_pascal_case)
+
+    # Convert dictionary representation of instance to json.
     return JSONEncoder().encode(d)

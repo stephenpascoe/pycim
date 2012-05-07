@@ -6,7 +6,7 @@
 import pickle
 
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_SCHEMAS
 
 
 # Module exports.
@@ -35,7 +35,7 @@ def encode(instance, version):
     # Defensive programming.
     if instance is None:
         raise CIMException('Cannot encode null instances.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
 
     return pickle.dumps(instance)

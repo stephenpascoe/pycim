@@ -7,7 +7,7 @@ from lxml import etree as et
 from pycim.core.decoding.cim_decoder_xml_utils import get_cim_xml
 from pycim.core.decoding.cim_decoder_xml_utils import decode_xml
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_SCHEMAS
 import pycim.v1_5.decoding as v1_5_decoders
 from pycim.v1_5.types.shared.cim_type_info import CimTypeInfo
 
@@ -45,8 +45,13 @@ _decoders = {
 _type_info = {
     '1.5' : {
         'dataObject' : ('data', 'Data Object'),
+        'ensemble' : ('activity', 'Ensemble'),
+        'gridSpec' : ('grids', 'Grid'),
         'modelComponent' : ('software', 'Model'),
         'numericalExperiment' : ('activity', 'Experiment'),
+        'platform' : ('activity', 'Platform'),
+        'simulationRun' : ('activity', 'Simulation'),
+        'simulationComposite' : ('activity', 'Simulation'),
     }
 }
 
@@ -61,7 +66,7 @@ def decode(representation, version):
     # Defensive programming.
     if representation is None:
         raise CIMException('Cannot decode null representations.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
 
     # Deserialize xml & associated namespaces.
@@ -93,16 +98,15 @@ def _set_cim_type_info(obj, version, type):
     type - cim type.
 
     """
-    try:
+    if version in _type_info and type in _type_info[version]:
         info = _type_info[version][type]
         obj.cim_info.type_info = CimTypeInfo()
         obj.cim_info.type_info.package = info[0]
         obj.cim_info.type_info.schema = version
         obj.cim_info.type_info.type = type
         obj.cim_info.type_info.type_display_name = info[1]
-    except Exception as e:
-        print e
-        pass
+    else:
+        print "WARNING :: CIM object type information is underivable", version, type
 
 
 def _can_decode_from_xml(xml):

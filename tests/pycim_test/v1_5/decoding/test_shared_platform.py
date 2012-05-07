@@ -93,6 +93,9 @@ class TestDecodePlatform(unittest.TestCase):
 
     def test_representation_dict(self):
         d = decode_dict_from_xml(CIM, XML_FILE, TYPE)
+        assert d is not None
+        assert isinstance(d, dict) == True
+
         # TODO
         
 
@@ -104,6 +107,4 @@ class TestDecodePlatform(unittest.TestCase):
         do_test_from_xml_file(CIM, XML_FILE, 'base64')
 
 
-    def test_representation_binary(self):
-        do_test_from_xml_file(CIM, XML_FILE, 'binary')
 

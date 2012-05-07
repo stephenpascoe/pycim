@@ -6,7 +6,7 @@
 import simplejson
 
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_SCHEMAS
 
 # Module exports.
 _all__ = ['decode']
@@ -33,7 +33,7 @@ def decode(representation, version):
     # Defensive programming.
     if representation is None:
         raise CIMException('Cannot decode null representations.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
 
     as_dict = simplejson.loads(representation)

@@ -4,13 +4,12 @@
 
 # Module imports.
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_ENCODINGS
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_ENCODINGS
+from pycim.cim_constants import CIM_SCHEMAS
 from pycim.core.decoding.cim_decoder_base64 import decode as decode_from_base64
 from pycim.core.decoding.cim_decoder_binary import decode as decode_from_binary
 from pycim.core.decoding.cim_decoder_json import decode as decode_from_json
 from pycim.core.decoding.cim_decoder_xml import decode as decode_from_xml
-from pycim.core.decoding.cim_decoder_yaml import decode as decode_from_yaml
 
 # Module exports.
 __all__ = ['decode']
@@ -33,7 +32,6 @@ _decoders = {
     'binary' : decode_from_binary,
     'json' : decode_from_json,
     'xml' : decode_from_xml,
-    'yaml' : decode_from_yaml,
 }
 
 
@@ -49,7 +47,7 @@ def decode(representation, version, encoding):
     # Defensive programming.
     if representation is None:
         raise CIMException('Cannot decode null representations.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
     if encoding not in CIM_ENCODINGS:
         raise CIMException('{0} is an unsupported CIM encoding.'.format(encoding))

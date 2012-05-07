@@ -4,13 +4,12 @@
 
 # Module imports.
 from pycim.core.cim_exception import CIMException
-from pycim.core.cim_constants import CIM_ENCODINGS
-from pycim.core.cim_constants import CIM_VERSIONS
+from pycim.cim_constants import CIM_ENCODINGS
+from pycim.cim_constants import CIM_SCHEMAS
 from pycim.core.encoding.cim_encoder_base64 import encode as encode_to_base64
 from pycim.core.encoding.cim_encoder_binary import encode as encode_to_binary
 from pycim.core.encoding.cim_encoder_json import encode as encode_to_json
 from pycim.core.encoding.cim_encoder_xml import encode as encode_to_xml
-from pycim.core.encoding.cim_encoder_yaml import encode as encode_to_yaml
 
 # Module exports.
 __all__ = ['encode']
@@ -34,7 +33,6 @@ _encoders = {
     'binary' : encode_to_binary,
     'json' : encode_to_json,
     'xml' : encode_to_xml,
-    'yaml' : encode_to_yaml,
 }
 
 
@@ -50,7 +48,7 @@ def encode(instance, version, encoding):
     # Defensive programming.
     if instance is None:
         raise CIMException('Cannot encode null instances.')
-    if version not in CIM_VERSIONS:
+    if version not in CIM_SCHEMAS:
         raise CIMException('{0} is an unsupported CIM version.'.format(version))
     if encoding not in CIM_ENCODINGS:
         raise CIMException('{0} is an unsupported CIM encoding.'.format(encoding))

@@ -55,18 +55,21 @@ class TestDecodeEnsemble(unittest.TestCase):
     def test_decode_obj_from_xml(self):
         obj = decode_obj_from_xml(CIM, XML_FILE, TYPE)
         
-        assert obj.cim_info.id == uuid.UUID('b464433a-d3a5-11df-837f-00163e9152a5')
-        assert obj.cim_info.version == '2'
-        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-06 10:06:42.266723')
+        assert obj.cim_info.id == uuid.UUID('fd46d094-6fdb-11e1-825e-00163e9152a5')
+        assert obj.cim_info.version == '1'
+        assert obj.cim_info.create_date == dateutil_parser.parse('2012-03-17 02:50:59.407620')
 
-        assert obj.long_name == 'RCP2.6'
-        assert obj.short_name == 'rcp26'
-        assert obj.description.startswith('Future projection (2006-2100) forced by RCP2.6.')
+        assert obj.long_name.startswith('historical (no-AIE), GISS-E2-R')
+        assert obj.short_name == 'historicalNoAIE GISS-E2-R p1'
+        assert obj.description.startswith('Each simulation was started from 20')
 
 
 
     def test_representation_dict(self):
         d = decode_dict_from_xml(CIM, XML_FILE, TYPE)
+        assert d is not None
+        assert isinstance(d, dict) == True
+
         # TODO
         
 
@@ -77,7 +80,4 @@ class TestDecodeEnsemble(unittest.TestCase):
     def test_representation_base64(self):
         do_test_from_xml_file(CIM, XML_FILE, 'base64')
 
-
-    def test_representation_binary(self):
-        do_test_from_xml_file(CIM, XML_FILE, 'binary')
 

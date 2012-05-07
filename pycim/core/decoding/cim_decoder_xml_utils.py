@@ -15,7 +15,7 @@ from pycim.core.cim_exception import CIMException
 
 
 # Module exports.
-__all__ = ["convert_to_string", 
+__all__ = ["convert_to_string",
            "convert_to_bool",
            "convert_to_integer",
            "convert_to_float",
@@ -73,8 +73,8 @@ def convert_to_string(xml, nsmap=None):
     nsmap -- set of xml namespace mappings.
 
     """
-    as_string = _get_value_as_string(xml, nsmap)
-    return as_string
+    return _get_value_as_string(xml, nsmap)
+
 
 def convert_to_bool(xml, nsmap=None):
     """Converts an etree element xml representation into a boolean type.
@@ -85,13 +85,16 @@ def convert_to_bool(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    if as_string is not None:
+    if as_string is None:
+        return bool()
+    else:
         as_string = as_string.upper()
         if as_string in ['TRUE']:
             return True
         elif as_string in ['FALSE']:
             return False
-    return bool(as_string)
+        else:
+            return bool()
 
 
 def convert_to_integer(xml, nsmap=None):
@@ -103,7 +106,10 @@ def convert_to_integer(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    return None if as_string is None else int(as_string)
+    if as_string is None:
+        return int()
+    else:
+        return int(as_string)
 
 
 def convert_to_float(xml, nsmap=None):
@@ -115,7 +121,10 @@ def convert_to_float(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    return None if as_string is None else float(as_string)
+    if as_string is None:
+        return float()
+    else:
+        return float(as_string)
 
 
 def convert_to_uid(xml, nsmap=None):
@@ -142,7 +151,10 @@ def convert_to_datetime(xml, nsmap=None):
 
     """
     as_string = _get_value_as_string(xml, nsmap)
-    return None if as_string is None else dateutil_parser.parse(as_string)
+    if as_string is None:
+        return None
+    else:
+        return dateutil_parser.parse(as_string)
 
 
 # Set of simple type convertors.
@@ -300,7 +312,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
 
     # otherwise exception
     raise CIMException("xml cannot be decoded.")
-    
+
 
 def get_cim_xml(xml, return_nsmap=False):
     """Deserializes cim instance to an etree element.

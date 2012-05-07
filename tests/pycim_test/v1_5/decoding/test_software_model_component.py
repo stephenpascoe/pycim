@@ -65,6 +65,7 @@ class TestDecodeModelComponent(unittest.TestCase):
         assert r.target.reference.name == 'HadGEM1'
         assert r.type == 'previousVersionOf'
 
+        print obj.activity
         assert obj.activity is None
         assert obj.timing is None
         assert len(obj.types ) == 1
@@ -118,13 +119,15 @@ class TestDecodeModelComponent(unittest.TestCase):
         assert obj.description.startswith('The HadGEM2-A model')
         assert obj.funding_sources == []
         assert obj.grid is None
-        assert obj.is_embedded is None
+        assert obj.is_embedded == False
         assert obj.license is None
         assert obj.long_name == 'Hadley Global Environment Model 2 - Atmosphere'
         assert obj.numerical_properties == []
-        assert obj.online_resource is None
+        # TODO default for uri's = None ?
+        assert obj.online_resource == str()
         assert obj.parent_component is None
-        assert obj.previous_version is None
+        # TODO default for str's = None ?
+        assert obj.previous_version == str()
         assert obj.release_date == dateutil_parser.parse('2009')
         assert len(obj.responsible_parties) == 4
         rp = obj.responsible_parties[0]
@@ -147,6 +150,9 @@ class TestDecodeModelComponent(unittest.TestCase):
 
     def test_representation_dict(self):
         d = decode_dict_from_xml(CIM, XML_FILE, TYPE)
+        assert d is not None
+        assert isinstance(d, dict) == True
+        
         assert d['cim_info']['id'] == uuid.UUID('7a2b64cc-03ca-11e1-a36a-00163e9152a5')
 
         assert d['short_name'] == 'HadGEM2-A'
@@ -169,9 +175,6 @@ class TestDecodeModelComponent(unittest.TestCase):
     def test_representation_base64(self):
         do_test_from_xml_file(CIM, XML_FILE, 'base64')
 
-
-    def test_representation_binary(self):
-        do_test_from_xml_file(CIM, XML_FILE, 'binary')
 
 
 
