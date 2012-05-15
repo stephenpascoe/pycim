@@ -90,6 +90,8 @@ class SimulationComposite(Simulation):
             raise TypeError("Value cannot be null.")
         elif not isinstance(value, CimInfo):
             raise TypeError("Invalid value type : VALUE = {0}.".format(value))
+        #!REVIEW: Only use docstrings at the top of functions/methods.
+        #         Use comments in this context.
         """Sets value of simulation composite cim_info property."""
         self.__cim_info = value
 

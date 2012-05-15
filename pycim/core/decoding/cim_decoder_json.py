@@ -9,7 +9,8 @@ from pycim.core.cim_exception import CIMException
 from pycim.cim_constants import CIM_SCHEMAS
 
 # Module exports.
-_all__ = ['decode']
+#!REVIEW: typo corrected below
+__all__ = ['decode']
 
 
 # Module provenance info.

@@ -215,11 +215,22 @@ class Simulation(NumericalActivity):
         self.__deployments.remove(item)
 
 
+    #!REVIEW: this property/getter/setter pattern looks very
+    #         unpythonic and unnecessary.  See individual comments
+
     @property
     def inputs(self):
         """Gets value of {class-name} inputs property.
 
         Implemented as a mapping from a source to target; can be a forcing file, a boundary condition, etc."""
+        #!REVIEW: This copies self.__inputs on every access.
+        #         Therefore self.inputs.append(item) will succeed but
+        #         do nothing.  Also for long lists that are accessed
+        #         frequently it will be inefficient.  If we really
+        #         want an immutable sequence we should cast to tuple
+        #         but why not just allow appending to self.inputs and
+        #         do away with self.append_to_inputs() and
+        #         self.remove_from_inputs()?
         return list(self.__inputs)
 
     @inputs.setter
@@ -229,6 +240,11 @@ class Simulation(NumericalActivity):
         Implemented as a mapping from a source to target; can be a forcing file, a boundary condition, etc."""
         if not isinstance(value, types.ListType):
             raise TypeError("value must be an iterable type.")
+        #!REVIEW: This code will delete all self.__inputs if value
+        #         contains an item of the wrong type (see
+        #         append_to_inputs).  You need to wrap this in an
+        #         try/accept clause or build the list before setting
+        #         self.__inputs.
         self.__inputs = []
         for i in value:
             self.append_to_inputs(i)
