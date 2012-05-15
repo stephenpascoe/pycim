@@ -18,7 +18,11 @@ __maintainer__ = "Sebastien Denvil"
 __email__ = "sdipsl@ipsl.jussieu.fr"
 __status__ = "Production"
 
+#!REVIEW: consider use of nose as the testing framework.  These functions need protecting
+#         against nose's test detection
+from nose.tools import nottest
 
+@nottest
 def get_test_file_path(version, file_name):
     """Returns file path for a test file.
 
@@ -28,7 +32,7 @@ def get_test_file_path(version, file_name):
             return path + '/pycim_test/v' + version.replace('.', '_') + '/test_data/' + file_name
     return None
 
-
+@nottest
 def get_test_xml_file(version, file_name):
     """Opens & returns a test xml file.
 
@@ -36,7 +40,6 @@ def get_test_xml_file(version, file_name):
     """
     path = get_test_file_path(version, file_name)
     return et.parse(path)
-
 
 def decode_obj_from_xml(version, xml_file, expected_type):
     """Decodes a test xml file & performs basic assertions.
@@ -82,7 +85,7 @@ def decode_dict_from_xml(version, xml_file, expected_type):
 
     return d
 
-
+@nottest
 def do_test_from_xml_file(version, xml_file, encoding):
     """Tests an xml representation aginst passed encoding.
 
